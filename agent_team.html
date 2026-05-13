@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>うちのAIスタッフ紹介します</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-bg: #fce4ec;
+    --pink-soft: #fde7ed;
+    --pink-deep: #f8bbd0;
+    --pink-accent: #f48fb1;
+    --pink-dark: #c2185b;
+    --cream: #fff8f0;
+    --mint: #b2dfdb;
+    --mint-soft: #d4eeec;
+    --mint-dark: #00695c;
+    --yellow: #fff3b0;
+    --yellow-deep: #ffd54f;
+    --purple-soft: #e1bee7;
+    --purple: #ce93d8;
+    --purple-dark: #6a1b9a;
+    --blue-soft: #bbdefb;
+    --blue: #90caf9;
+    --blue-dark: #1565c0;
+    --orange-soft: #ffccbc;
+    --orange: #ffab91;
+    --orange-dark: #d84315;
+    --green-soft: #c8e6c9;
+    --green: #a5d6a7;
+    --green-dark: #2e7d32;
+    --brown: #8d6e63;
+    --brown-dark: #5d4037;
+    --text: #5d4037;
+    --text-soft: #8d6e63;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+    background: var(--pink-bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 10% 5%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 90% 15%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px),
+      radial-gradient(circle at 80% 60%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 50% 85%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px);
+    background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px, 190px 190px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ヘッダー */
+  .header {
+    text-align: center;
+    padding: 30px 16px 24px;
+  }
+
+  .header .deco-top {
+    font-size: 22px;
+    margin-bottom: 8px;
+    letter-spacing: 6px;
+  }
+
+  .header h1 {
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--pink-dark);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 0 var(--white);
+  }
+
+  .header h1 .small {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .header .subtitle {
+    display: inline-block;
+    background: var(--white);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--pink-dark);
+    font-weight: 700;
+    border: 2px dashed var(--pink-accent);
+    margin-top: 8px;
+  }
+
+  /* リード（つかみ） */
+  .lead {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 0 var(--pink-deep);
+    border: 3px solid var(--pink-deep);
+    position: relative;
+  }
+
+  .lead::before {
+    content: '👥';
+    position: absolute;
+    top: -16px;
+    left: 20px;
+    font-size: 24px;
+    background: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--pink-deep);
+  }
+
+  .lead p {
+    font-size: 14px;
+    line-height: 1.9;
+    margin-top: 8px;
+  }
+
+  .lead .highlight {
+    background: linear-gradient(transparent 60%, var(--yellow) 60%);
+    font-weight: 700;
+  }
+
+  .lead .big-num {
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  .lead .big-num strong {
+    font-size: 42px;
+    color: var(--pink-dark);
+    font-weight: 900;
+    display: block;
+    line-height: 1;
+  }
+
+  .lead .big-num span {
+    font-size: 13px;
+    color: var(--text-soft);
+    font-weight: 700;
+  }
+
+  /* コンセプト */
+  .concept {
+    background: linear-gradient(135deg, var(--yellow) 0%, #ffe082 100%);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 24px;
+    border: 2px solid var(--yellow-deep);
+    box-shadow: 0 4px 0 var(--yellow-deep);
+    text-align: center;
+  }
+
+  .concept .emoji-big {
+    font-size: 32px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .concept .label {
+    display: inline-block;
+    background: var(--white);
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: #8d6e00;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .concept p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--brown-dark);
+    font-weight: 700;
+  }
+
+  /* セクションヘッダー */
+  .section-header {
+    text-align: center;
+    padding: 20px 16px 14px;
+    margin-top: 16px;
+  }
+
+  .section-header .chapter {
+    display: inline-block;
+    background: var(--pink-accent);
+    color: var(--white);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 0 var(--pink-dark);
+  }
+
+  .section-header h2 {
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--brown-dark);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .section-header .sub {
+    font-size: 12px;
+    color: var(--text-soft);
+  }
+
+  /* スタッフカード */
+  .staff-card {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 20px 18px;
+    margin-bottom: 16px;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 5px 0 var(--pink-deep);
+    position: relative;
+  }
+
+  .staff-card.pink { border-color: var(--pink-accent); box-shadow: 0 5px 0 var(--pink-accent); }
+  .staff-card.mint { border-color: var(--mint); box-shadow: 0 5px 0 var(--mint); }
+  .staff-card.blue { border-color: var(--blue); box-shadow: 0 5px 0 var(--blue); }
+  .staff-card.purple { border-color: var(--purple); box-shadow: 0 5px 0 var(--purple); }
+  .staff-card.orange { border-color: var(--orange); box-shadow: 0 5px 0 var(--orange); }
+  .staff-card.green { border-color: var(--green); box-shadow: 0 5px 0 var(--green); }
+  .staff-card.yellow { border-color: var(--yellow-deep); box-shadow: 0 5px 0 var(--yellow-deep); }
+
+  .staff-card .badge {
+    position: absolute;
+    top: -12px;
+    left: 16px;
+    background: var(--pink-accent);
+    color: var(--white);
+    padding: 3px 12px;
+    border-radius: 14px;
+    font-size: 10px;
+    font-weight: 800;
+    box-shadow: 0 2px 0 var(--pink-dark);
+  }
+
+  .staff-card.pink .badge { background: var(--pink-accent); box-shadow: 0 2px 0 var(--pink-dark); }
+  .staff-card.mint .badge { background: var(--mint-dark); box-shadow: 0 2px 0 #004d40; }
+  .staff-card.blue .badge { background: var(--blue-dark); box-shadow: 0 2px 0 #0d47a1; }
+  .staff-card.purple .badge { background: var(--purple-dark); box-shadow: 0 2px 0 #4a148c; }
+  .staff-card.orange .badge { background: var(--orange-dark); box-shadow: 0 2px 0 #bf360c; }
+  .staff-card.green .badge { background: var(--green-dark); box-shadow: 0 2px 0 #1b5e20; }
+  .staff-card.yellow .badge { background: #8d6e00; box-shadow: 0 2px 0 #5d4500; }
+
+  .staff-card .top-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px dotted var(--pink-soft);
+  }
+
+  .staff-card .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--pink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    flex-shrink: 0;
+    border: 3px solid var(--white);
+    box-shadow: 0 2px 0 var(--pink-deep);
+  }
+
+  .staff-card.mint .avatar { background: var(--mint-soft); box-shadow: 0 2px 0 var(--mint); }
+  .staff-card.blue .avatar { background: #e3f2fd; box-shadow: 0 2px 0 var(--blue); }
+  .staff-card.purple .avatar { background: #f3e5f5; box-shadow: 0 2px 0 var(--purple); }
+  .staff-card.orange .avatar { background: #ffe0d4; box-shadow: 0 2px 0 var(--orange); }
+  .staff-card.green .avatar { background: #e8f5e9; box-shadow: 0 2px 0 var(--green); }
+  .staff-card.yellow .avatar { background: var(--yellow); box-shadow: 0 2px 0 var(--yellow-deep); }
+
+  .staff-card .name-block {
+    flex: 1;
+  }
+
+  .staff-card .name {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--brown-dark);
+    line-height: 1.3;
+  }
+
+  .staff-card .role {
+    font-size: 11px;
+    color: var(--pink-dark);
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .staff-card.mint .role { color: var(--mint-dark); }
+  .staff-card.blue .role { color: var(--blue-dark); }
+  .staff-card.purple .role { color: var(--purple-dark); }
+  .staff-card.orange .role { color: var(--orange-dark); }
+  .staff-card.green .role { color: var(--green-dark); }
+  .staff-card.yellow .role { color: #8d6e00; }
+
+  .staff-card .description {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .staff-card .task-list {
+    background: var(--pink-soft);
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .staff-card.mint .task-list { background: var(--mint-soft); }
+  .staff-card.blue .task-list { background: #e3f2fd; }
+  .staff-card.purple .task-list { background: #f3e5f5; }
+  .staff-card.orange .task-list { background: #ffe0d4; }
+  .staff-card.green .task-list { background: #e8f5e9; }
+  .staff-card.yellow .task-list { background: var(--yellow); }
+
+  .staff-card .task-list strong {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: var(--pink-dark);
+  }
+
+  .staff-card.mint .task-list strong { color: var(--mint-dark); }
+  .staff-card.blue .task-list strong { color: var(--blue-dark); }
+  .staff-card.purple .task-list strong { color: var(--purple-dark); }
+  .staff-card.orange .task-list strong { color: var(--orange-dark); }
+  .staff-card.green .task-list strong { color: var(--green-dark); }
+  .staff-card.yellow .task-list strong { color: #8d6e00; }
+
+  .staff-card .skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .staff-card .skill {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-soft);
+    border: 1px solid var(--pink-deep);
+  }
+
+  /* 仕組み解説 */
+  .how-it-works {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 22px 18px;
+    margin-bottom: 20px;
+    border: 3px solid var(--pink-deep);
+    box-shadow: 0 4px 0 var(--pink-deep);
+  }
+
+  .how-it-works h3 {
+    text-align: center;
+    color: var(--pink-dark);
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .how-step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+
+  .how-step .step-num {
+    background: var(--pink-accent);
+    color: var(--white);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .how-step .step-text {
+    font-size: 13px;
+    line-height: 1.7;
+    padding-top: 2px;
+  }
+
+  .how-step .step-text strong {
+    color: var(--brown-dark);
+  }
+
+  /* CLAUDE.md カード */
+  .claude-md-card {
+    background: #2d2d2d;
+    border-radius: 18px;
+    padding: 18px;
+    margin: 14px 0;
+    color: #e8e8e8;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 1.7;
+    overflow-x: auto;
+  }
+
+  .claude-md-card .file-name {
+    color: #ffab91;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: block;
+    border-bottom: 1px dashed #555;
+    padding-bottom: 6px;
+  }
+
+  .claude-md-card .comment { color: #81c784; }
+  .claude-md-card .keyword { color: #ffd54f; }
+  .claude-md-card .string { color: #f8bbd0; }
+
+  /* 比較表 */
+  .summary-table {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px 16px;
+    margin-bottom: 16px;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 4px 0 var(--pink-deep);
+  }
+
+  .summary-table h3 {
+    text-align: center;
+    color: var(--pink-dark);
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .summary-table .table-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--pink-deep);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .summary-table .table-row:last-child { border-bottom: none; }
+
+  .summary-table .term {
+    font-weight: 800;
+    color: var(--pink-dark);
+  }
+
+  /* メリットカード */
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .benefit {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 16px;
+    border: 2px solid var(--mint);
+    box-shadow: 0 3px 0 var(--mint);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .benefit .emoji {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .benefit .text strong {
+    display: block;
+    font-size: 14px;
+    color: var(--mint-dark);
+    margin-bottom: 4px;
+    font-weight: 800;
+  }
+
+  .benefit .text {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  /* 始め方 */
+  .start-guide {
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 22px 18px;
+    margin-bottom: 16px;
+    border: 3px dashed var(--pink-accent);
+  }
+
+  .start-guide h3 {
+    text-align: center;
+    color: var(--pink-dark);
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .start-step {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--pink-accent);
+  }
+
+  .start-step .step-title {
+    font-weight: 800;
+    color: var(--pink-dark);
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .start-step .step-detail {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* 分けライン */
+  .divider {
+    text-align: center;
+    margin: 28px 0;
+    font-size: 18px;
+    letter-spacing: 8px;
+  }
+
+  /* フッター */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 30px;
+  }
+
+  .footer .deco {
+    font-size: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 10px;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.8;
+  }
+
+  .footer .signature {
+    margin-top: 16px;
+    font-weight: 700;
+    color: var(--pink-dark);
+    font-size: 14px;
+  }
+
+  /* ふきだし */
+  .speech-bubble {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 16px 18px;
+    margin: 14px 0;
+    border: 2px solid var(--pink-accent);
+    position: relative;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .speech-bubble::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid var(--pink-accent);
+  }
+
+  .speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 32px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--white);
+  }
+
+  .speech-bubble .who {
+    font-size: 11px;
+    color: var(--pink-dark);
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  /* リレー/並列の動き図 */
+  .flow-card {
+    background: var(--white);
+    border-radius: 22px;
+    padding: 22px 18px;
+    margin-bottom: 16px;
+    border: 3px solid var(--pink-deep);
+    box-shadow: 0 5px 0 var(--pink-deep);
+  }
+
+  .flow-card.blue { border-color: var(--blue); box-shadow: 0 5px 0 var(--blue); }
+  .flow-card.purple { border-color: var(--purple); box-shadow: 0 5px 0 var(--purple); }
+
+  .flow-card .flow-title {
+    text-align: center;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--brown-dark);
+    margin-bottom: 6px;
+  }
+
+  .flow-card .flow-sub {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-soft);
+    margin-bottom: 16px;
+  }
+
+  /* バトンリレー図 */
+  .relay-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 14px 0;
+  }
+
+  .relay-node {
+    background: var(--pink-soft);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid var(--pink-deep);
+  }
+
+  .relay-node .agent-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    border: 2px solid var(--pink-deep);
+  }
+
+  .relay-node .node-content {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .relay-node .node-name {
+    font-weight: 800;
+    color: var(--pink-dark);
+    font-size: 12px;
+  }
+
+  .relay-arrow {
+    text-align: center;
+    font-size: 18px;
+    color: var(--pink-dark);
+    line-height: 1;
+    margin: 2px 0;
+  }
+
+  /* 並列動作図 */
+  .parallel-flow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 14px 0;
+  }
+
+  .parallel-node {
+    background: #f3e5f5;
+    border-radius: 14px;
+    padding: 10px 8px;
+    text-align: center;
+    border: 2px solid var(--purple);
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .parallel-node .agent-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin: 0 auto 4px;
+    border: 2px solid var(--purple);
+  }
+
+  .parallel-node .node-name {
+    font-weight: 800;
+    color: var(--purple-dark);
+    font-size: 11px;
+  }
+
+  .parallel-header {
+    text-align: center;
+    background: var(--purple);
+    color: var(--white);
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  /* メリット/デメリット箱 */
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .pros-box, .cons-box {
+    border-radius: 14px;
+    padding: 14px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .pros-box {
+    background: #e8f5e9;
+    border: 2px solid var(--green);
+  }
+
+  .cons-box {
+    background: var(--yellow);
+    border: 2px solid var(--yellow-deep);
+  }
+
+  .pros-box .label, .cons-box .label {
+    font-weight: 800;
+    font-size: 12px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .pros-box .label { color: var(--green-dark); }
+  .cons-box .label { color: #8d6e00; }
+
+  .pros-box ul, .cons-box ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .pros-box li, .cons-box li {
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 4px;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .pros-box li::before {
+    content: '✿';
+    position: absolute;
+    left: 0;
+    color: var(--green-dark);
+  }
+
+  .cons-box li::before {
+    content: '⚠';
+    position: absolute;
+    left: 0;
+    color: #8d6e00;
+    font-size: 10px;
+  }
+
+  /* 使い分けカード */
+  .when-to-use {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin-top: 14px;
+    border: 2px dashed var(--pink-accent);
+  }
+
+  /* 目次へ戻るボタン */
+  .back-to-toc {
+    text-align: center;
+    margin: 14px 0 0;
+  }
+
+  .back-to-toc a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    color: var(--pink-dark);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 2px solid var(--pink-accent);
+    box-shadow: 0 2px 0 var(--pink-accent);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .back-to-toc a:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 var(--pink-accent);
+  }
+
+  /* 浮かぶ目次ボタン（ページ右下に固定表示） */
+  .floating-toc-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    background: var(--pink-accent);
+    color: var(--white);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 22px;
+    box-shadow: 0 4px 0 var(--pink-dark), 0 6px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .floating-toc-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--pink-dark), 0 3px 6px rgba(0,0,0,0.15);
+  }
+
+  .when-to-use .title {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--pink-dark);
+    margin-bottom: 8px;
+  }
+
+  .when-to-use .example {
+    font-size: 12px;
+    line-height: 1.7;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .when-to-use .example::before {
+    content: '🌷';
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+  }
+
+  /* 比較表（バトン vs 並列） */
+  .vs-table {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 16px 12px;
+    margin: 16px 0;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 3px 0 var(--pink-deep);
+  }
+
+  /* 環境カード */
+  .env-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 18px 16px;
+    margin-bottom: 14px;
+    border: 2px solid var(--mint);
+    box-shadow: 0 4px 0 var(--mint);
+  }
+
+  .env-card.blue { border-color: var(--blue); box-shadow: 0 4px 0 var(--blue); }
+  .env-card.orange { border-color: var(--orange); box-shadow: 0 4px 0 var(--orange); }
+  .env-card.purple { border-color: var(--purple); box-shadow: 0 4px 0 var(--purple); }
+
+  .env-card .env-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px dotted var(--mint);
+  }
+
+  .env-card.blue .env-header { border-bottom-color: var(--blue); }
+  .env-card.orange .env-header { border-bottom-color: var(--orange); }
+  .env-card.purple .env-header { border-bottom-color: var(--purple); }
+
+  .env-card .env-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    background: var(--mint-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--mint);
+  }
+
+  .env-card.blue .env-icon { background: #e3f2fd; border-color: var(--blue); }
+  .env-card.orange .env-icon { background: #ffe0d4; border-color: var(--orange); }
+  .env-card.purple .env-icon { background: #f3e5f5; border-color: var(--purple); }
+
+  .env-card .env-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--mint-dark);
+  }
+
+  .env-card.blue .env-name { color: var(--blue-dark); }
+  .env-card.orange .env-name { color: var(--orange-dark); }
+  .env-card.purple .env-name { color: var(--purple-dark); }
+
+  .env-card .env-role {
+    font-size: 11px;
+    color: var(--text-soft);
+    margin-top: 2px;
+  }
+
+  .env-card .env-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .env-card .env-detail {
+    background: var(--mint-soft);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .env-card.blue .env-detail { background: #e3f2fd; }
+  .env-card.orange .env-detail { background: #ffe0d4; }
+  .env-card.purple .env-detail { background: #f3e5f5; }
+
+  .env-card .env-detail strong {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 4px;
+    color: var(--mint-dark);
+  }
+
+  .env-card.blue .env-detail strong { color: var(--blue-dark); }
+  .env-card.orange .env-detail strong { color: var(--orange-dark); }
+  .env-card.purple .env-detail strong { color: var(--purple-dark); }
+
+  .env-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  .env-tag {
+    background: var(--white);
+    border: 1px solid var(--mint);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 10px;
+    color: var(--mint-dark);
+    font-weight: 700;
+  }
+
+  .env-card.blue .env-tag { border-color: var(--blue); color: var(--blue-dark); }
+  .env-card.orange .env-tag { border-color: var(--orange); color: var(--orange-dark); }
+  .env-card.purple .env-tag { border-color: var(--purple); color: var(--purple-dark); }
+
+  /* 構成図 */
+  .architecture-diagram {
+    background: #2d2d2d;
+    border-radius: 18px;
+    padding: 20px 16px;
+    margin: 14px 0;
+    color: #e8e8e8;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+
+  .architecture-diagram .arch-title {
+    color: #ffab91;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 1px dashed #555;
+    padding-bottom: 8px;
+  }
+
+  .architecture-diagram .arch-line { white-space: pre; }
+  .architecture-diagram .arch-comment { color: #81c784; }
+  .architecture-diagram .arch-highlight { color: #ffd54f; }
+
+  /* スターターパック */
+  .starter-pack {
+    background: linear-gradient(135deg, var(--yellow) 0%, #ffe082 100%);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 2px solid var(--yellow-deep);
+    box-shadow: 0 4px 0 var(--yellow-deep);
+  }
+
+  .starter-pack h3 {
+    text-align: center;
+    color: #8d6e00;
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .starter-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .starter-item .check {
+    background: var(--green);
+    color: var(--white);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 800;
+    font-size: 12px;
+  }
+
+  .starter-item strong {
+    color: var(--brown-dark);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .vs-table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    padding: 8px 4px;
+    font-size: 11px;
+    font-weight: 800;
+    text-align: center;
+    border-bottom: 2px solid var(--pink-deep);
+  }
+
+  .vs-table-header div:nth-child(1) { color: var(--text-soft); }
+  .vs-table-header div:nth-child(2) { color: var(--blue-dark); }
+  .vs-table-header div:nth-child(3) { color: var(--purple-dark); }
+
+  .vs-table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    padding: 10px 4px;
+    font-size: 11px;
+    line-height: 1.5;
+    border-bottom: 1px dotted var(--pink-deep);
+    align-items: center;
+  }
+
+  .vs-table-row:last-child { border-bottom: none; }
+
+  .vs-table-row .label {
+    font-weight: 700;
+    color: var(--brown-dark);
+    font-size: 11px;
+  }
+
+  .vs-table-row div:nth-child(2),
+  .vs-table-row div:nth-child(3) {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="deco-top">🎀 👥 ✨ 👥 🎀</div>
+    <h1>
+      <span class="small">〜 ママひとり、スタッフ9人 〜</span>
+      うちのAIチーム<br>紹介します🌷
+    </h1>
+    <div class="subtitle">エージェントチーム編 第3巻</div>
+  </header>
+
+  <!-- リード -->
+  <div class="lead">
+    <p>
+      家族5人の家事育児を回しながら、<br>
+      いろんなお仕事をこなす毎日…<br>
+      <span class="highlight">どうやって時間を作ってるの？</span>
+    </p>
+    <div class="big-num">
+      <strong>9</strong>
+      <span>人のAIスタッフがいるから🌸</span>
+    </div>
+    <p>
+      ひとりひとりに名前と役割をつけて、<br>
+      <span class="highlight">専門スタッフのチーム</span>として動いてもらってます✨
+    </p>
+  </div>
+
+  <!-- 目次 -->
+  <div id="toc" style="background:var(--cream); border-radius:20px; padding:20px; margin-bottom:24px; border:2px dashed var(--pink-accent);">
+    <h3 style="text-align:center; color:var(--pink-dark); margin-bottom:14px; font-size:16px; font-weight:800;">🌷 もくじ 🌷</h3>
+    <a href="#chapter-why" style="display:flex; align-items:center; gap:10px; padding:10px 12px; margin-bottom:8px; background:var(--white); border-radius:14px; font-size:13px; font-weight:700; color:var(--brown-dark); text-decoration:none;">
+      <div style="background:var(--pink-accent); color:var(--white); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">1</div>
+      <div>なぜ役割を分けるの？</div>
+    </a>
+    <a href="#chapter-staff" style="display:flex; align-items:center; gap:10px; padding:10px 12px; margin-bottom:8px; background:var(--white); border-radius:14px; font-size:13px; font-weight:700; color:var(--brown-dark); text-decoration:none;">
+      <div style="background:var(--pink-accent); color:var(--white); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">2</div>
+      <div>チームメンバー紹介（9人）</div>
+    </a>
+    <a href="#chapter-how" style="display:flex; align-items:center; gap:10px; padding:10px 12px; margin-bottom:8px; background:var(--white); border-radius:14px; font-size:13px; font-weight:700; color:var(--brown-dark); text-decoration:none;">
+      <div style="background:var(--pink-accent); color:var(--white); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">3</div>
+      <div>どうやって作るの？仕組み</div>
+    </a>
+    <a href="#chapter-benefit" style="display:flex; align-items:center; gap:10px; padding:10px 12px; margin-bottom:8px; background:var(--white); border-radius:14px; font-size:13px; font-weight:700; color:var(--brown-dark); text-decoration:none;">
+      <div style="background:var(--pink-accent); color:var(--white); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">4</div>
+      <div>チーム化のメリット</div>
+    </a>
+    <a href="#chapter-run" style="display:flex; align-items:center; gap:10px; padding:10px 12px; margin-bottom:8px; background:var(--white); border-radius:14px; font-size:13px; font-weight:700; color:var(--brown-dark); text-decoration:none;">
+      <div style="background:var(--pink-accent); color:var(--white); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">5</div>
+      <div>動かし方の2スタイル</div>
+    </a>
+    <a href="#chapter-env" style="display:flex; align-items:center; gap:10px; padding:10px 12px; margin-bottom:8px; background:var(--white); border-radius:14px; font-size:13px; font-weight:700; color:var(--brown-dark); text-decoration:none;">
+      <div style="background:var(--pink-accent); color:var(--white); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">6</div>
+      <div>並列処理に必要な環境</div>
+    </a>
+    <a href="#chapter-start" style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:var(--white); border-radius:14px; font-size:13px; font-weight:700; color:var(--brown-dark); text-decoration:none;">
+      <div style="background:var(--pink-accent); color:var(--white); width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0;">7</div>
+      <div>あなたも作ってみよう</div>
+    </a>
+  </div>
+
+  <!-- コンセプト -->
+  <div class="concept">
+    <span class="emoji-big">🏢</span>
+    <span class="label">コンセプト</span>
+    <p>
+      ひとつのClaudeに全部頼むより<br>
+      <strong>「ひとり一役」</strong>に分けたほうが<br>
+      ぐっと精度が上がるんです🎀
+    </p>
+  </div>
+
+  <!-- 仕組み -->
+  <div id="chapter-why" class="how-it-works">
+    <h3>🌷 なぜ役割を分けるの？ 🌷</h3>
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>専門性が深まる</strong><br>
+        「文章担当」と「分析担当」を分けると、それぞれが自分の領域の知識に集中できる
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>指示が短くて済む</strong><br>
+        毎回「あなたは○○担当で〜」と説明しなくていい。名前を呼ぶだけ
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>並行作業ができる</strong><br>
+        ひとりが原稿を書いている横で、別の子がデザインを進める…みたいなことができる
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        <strong>愛着がわく</strong><br>
+        「うちの子たち」感覚で、毎日の運用が楽しくなる💕
+      </div>
+    </div>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 🐻 🌸</div>
+
+  <!-- ============= スタッフ紹介 ============= -->
+  <div id="chapter-staff" class="section-header">
+    <span class="chapter">Staff List</span>
+    <h2>うちのチームメンバー🎀</h2>
+    <div class="sub">それぞれに得意分野があります</div>
+  </div>
+
+  <!-- もも（人事担当） -->
+  <div class="staff-card pink">
+    <div class="badge">👥 人事担当</div>
+    <div class="top-row">
+      <div class="avatar">🍑</div>
+      <div class="name-block">
+        <div class="name">もも</div>
+        <div class="role">チームの人事 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      他のスタッフ全員をまとめる<strong>マネージャー的存在</strong>🌷<br>
+      新しく雇うべき子の設計、既存メンバーの役割調整、振り返りのファシリも担当。
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・新エージェントの企画・設計<br>
+      ・既存メンバーの役割見直し<br>
+      ・チーム全体の振り返り<br>
+      ・指示書（CLAUDE.md）の整備
+    </div>
+    <div class="skills-row">
+      <span class="skill">組織設計</span>
+      <span class="skill">エージェント企画</span>
+      <span class="skill">ファシリ</span>
+    </div>
+  </div>
+
+  <!-- そら（データ分析） -->
+  <div class="staff-card blue">
+    <div class="badge">📊 アナリスト</div>
+    <div class="top-row">
+      <div class="avatar">🌤️</div>
+      <div class="name-block">
+        <div class="name">そら</div>
+        <div class="role">データ分析 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      数字を読み解いて、<br>
+      <strong>「次にやるべきこと」</strong>を提案してくれる頼れる参謀✨
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・アクセス・反応データの分析<br>
+      ・改善ポイントの抽出<br>
+      ・優先タスクの選定<br>
+      ・週次レポートの作成
+    </div>
+    <div class="skills-row">
+      <span class="skill">データ分析</span>
+      <span class="skill">レポート</span>
+      <span class="skill">Python</span>
+    </div>
+  </div>
+
+  <!-- こと（編集） -->
+  <div class="staff-card purple">
+    <div class="badge">🎨 編集デスク</div>
+    <div class="top-row">
+      <div class="avatar">📐</div>
+      <div class="name-block">
+        <div class="name">こと</div>
+        <div class="role">編集・校正 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      他のスタッフが書いた文章を整えて、読みやすく仕上げる編集者。<br>
+      読み手目線でのアドバイスも得意🌷
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・文章のリファイン<br>
+      ・誤字脱字チェック<br>
+      ・読みやすさの改善<br>
+      ・構成の最終調整
+    </div>
+    <div class="skills-row">
+      <span class="skill">校正</span>
+      <span class="skill">UX文章</span>
+      <span class="skill">情報設計</span>
+    </div>
+  </div>
+
+  <!-- つき（自動化） -->
+  <div class="staff-card orange">
+    <div class="badge">🤖 自動化エンジニア</div>
+    <div class="top-row">
+      <div class="avatar">🌙</div>
+      <div class="name-block">
+        <div class="name">つき</div>
+        <div class="role">自動化スクリプト 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      家のPCで24時間動くスクリプトを管理。<br>
+      <strong>夜中にこっそり仕事をしてくれる</strong>働き者🌙
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・定期実行タスクの管理<br>
+      ・データ取得処理<br>
+      ・夜間バッチ処理<br>
+      ・通知連携の設定
+    </div>
+    <div class="skills-row">
+      <span class="skill">スケジューラ</span>
+      <span class="skill">Apps Script</span>
+      <span class="skill">通知連携</span>
+    </div>
+  </div>
+
+  <!-- なぎ（戦略） -->
+  <div class="staff-card green">
+    <div class="badge">🧭 ナビゲーター</div>
+    <div class="top-row">
+      <div class="avatar">🗺️</div>
+      <div class="name-block">
+        <div class="name">なぎ</div>
+        <div class="role">戦略・方向性 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      「次に何をすべきか？」を相談できるパートナー。<br>
+      全体の<strong>方向性を一緒に考えてくれる</strong>戦略家🌟
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・全体戦略の立案<br>
+      ・優先順位の整理<br>
+      ・新企画のブレスト<br>
+      ・週次PDCAのファシリ
+    </div>
+    <div class="skills-row">
+      <span class="skill">戦略立案</span>
+      <span class="skill">KPI設計</span>
+      <span class="skill">PDCA</span>
+    </div>
+  </div>
+
+  <!-- いろ（総合デザイナー） -->
+  <div class="staff-card pink">
+    <div class="badge">🎨 総合デザイナー</div>
+    <div class="top-row">
+      <div class="avatar">🌈</div>
+      <div class="name-block">
+        <div class="name">いろ</div>
+        <div class="role">デザイン全般 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      ビジュアルや配色、レイアウトを担当する<strong>センスの良い子</strong>🌷<br>
+      バナー、図解、アイキャッチまで何でもこなすデザイン総合職✨
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・配色・トーン設計<br>
+      ・図解・インフォグラフィック<br>
+      ・バナー・アイキャッチ制作<br>
+      ・ビジュアルガイドラインの整備
+    </div>
+    <div class="skills-row">
+      <span class="skill">配色</span>
+      <span class="skill">レイアウト</span>
+      <span class="skill">UIデザイン</span>
+    </div>
+  </div>
+
+  <!-- れん（営業） -->
+  <div class="staff-card yellow">
+    <div class="badge">💼 営業</div>
+    <div class="top-row">
+      <div class="avatar">🤝</div>
+      <div class="name-block">
+        <div class="name">れん</div>
+        <div class="role">対外対応 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      お客さん向けの<strong>提案文や見積もり</strong>を作る営業役。<br>
+      丁寧な敬語と分かりやすい説明が得意🌷
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・サービス提案文の作成<br>
+      ・問い合わせ返信の下書き<br>
+      ・見積もりの設計<br>
+      ・お客さん向けページの更新
+    </div>
+    <div class="skills-row">
+      <span class="skill">営業文</span>
+      <span class="skill">価格設計</span>
+      <span class="skill">顧客対応</span>
+    </div>
+  </div>
+
+  <!-- ふみ（学習サポート） -->
+  <div class="staff-card mint">
+    <div class="badge">🎓 メンター</div>
+    <div class="top-row">
+      <div class="avatar">📚</div>
+      <div class="name-block">
+        <div class="name">ふみ</div>
+        <div class="role">学習サポート 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      新しい技術や概念を<strong>やさしく解説</strong>してくれる先生役。<br>
+      つまずいた時に頼りになる存在📖
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・新ツールの使い方解説<br>
+      ・つまずきポイントの整理<br>
+      ・学習プランの設計<br>
+      ・わかりやすい資料作成
+    </div>
+    <div class="skills-row">
+      <span class="skill">教育設計</span>
+      <span class="skill">図解</span>
+      <span class="skill">わかりやすさ</span>
+    </div>
+  </div>
+
+  <!-- ほし（SNS担当） -->
+  <div class="staff-card purple">
+    <div class="badge">⭐ SNS担当</div>
+    <div class="top-row">
+      <div class="avatar">📸</div>
+      <div class="name-block">
+        <div class="name">ほし</div>
+        <div class="role">SNS発信 担当</div>
+      </div>
+    </div>
+    <div class="description">
+      <strong>新人ホープ✨</strong> SNS投稿の企画・原稿・ハッシュタグ選定までこなす。<br>
+      優しい世界観を作るのが得意🌟
+    </div>
+    <div class="task-list">
+      <strong>🍓 主なお仕事</strong>
+      ・投稿原稿の作成<br>
+      ・動画台本の作成<br>
+      ・発信カレンダー設計<br>
+      ・コメント返信の下書き
+    </div>
+    <div class="skills-row">
+      <span class="skill">SNS戦略</span>
+      <span class="skill">短尺動画</span>
+      <span class="skill">ハッシュタグ</span>
+    </div>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 ⚙️ 🌸</div>
+
+  <!-- 仕組みの解説 -->
+  <div id="chapter-how" class="section-header">
+    <span class="chapter">How it works</span>
+    <h2>どうやって作るの？</h2>
+    <div class="sub">技術的な裏側を、ふんわり解説</div>
+  </div>
+
+  <div class="how-it-works">
+    <h3>🌷 仕組みは「指示書」の使い分け 🌷</h3>
+    <div class="how-step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        各エージェントごとに<strong>「CLAUDE.md」</strong>という指示書ファイルを用意
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        その中に<strong>「あなたは○○担当」「こんな時はこうする」</strong>を細かく書く
+      </div>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        Claude Codeでそのフォルダに入ると、自動でその子が起動する仕組み🌸
+      </div>
+    </div>
+  </div>
+
+  <div class="claude-md-card">
+    <span class="file-name">📄 hoshi/CLAUDE.md</span>
+    <span class="comment"># SNS担当エージェント・ほし</span><br><br>
+    <span class="keyword">## あなたの役割</span><br>
+    あなたは <span class="string">「ほし」</span> という<br>
+    SNS発信担当のAIエージェントです。<br><br>
+    <span class="keyword">## 担当領域</span><br>
+    フォロワーさん向けの<br>
+    日常発信・お役立ち投稿<br><br>
+    <span class="keyword">## トーン</span><br>
+    やさしく、共感的、押し付けない🌷<br><br>
+    <span class="keyword">## やってはいけないこと</span><br>
+    - 誇張表現<br>
+    - 他の人の悪口<br>
+    - 個人情報の特定につながる発信
+  </div>
+
+  <div class="speech-bubble">
+    <div class="who">📌 大事なポイント</div>
+    各CLAUDE.mdは<strong>「育成手帳」</strong>みたいなもの🌷<br>
+    最初は数行でも、使いながら少しずつ書き足していくと、その子がどんどん賢くなります✨
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 🍼 🌸</div>
+
+  <!-- メリット -->
+  <div id="chapter-benefit" class="section-header">
+    <span class="chapter">Benefit</span>
+    <h2>チーム化のメリット</h2>
+    <div class="sub">なぜ単体じゃダメなの？</div>
+  </div>
+
+  <div class="benefit-grid">
+    <div class="benefit">
+      <span class="emoji">🎯</span>
+      <div class="text">
+        <strong>精度が上がる</strong>
+        全部1人に頼むと、SNS的な軽い文体とビジネス文書が混ざる。役割分担で<strong>キャラがブレない</strong>
+      </div>
+    </div>
+    <div class="benefit">
+      <span class="emoji">⚡</span>
+      <div class="text">
+        <strong>速度が上がる</strong>
+        ひとりが原稿を書いてる横で別の子がデザイン準備、<strong>同時進行</strong>できる
+      </div>
+    </div>
+    <div class="benefit">
+      <span class="emoji">📝</span>
+      <div class="text">
+        <strong>指示が短くなる</strong>
+        「ももさん、新しいエージェント設計お願い」だけ。<strong>前提説明が不要</strong>
+      </div>
+    </div>
+    <div class="benefit">
+      <span class="emoji">💕</span>
+      <div class="text">
+        <strong>続けやすくなる</strong>
+        「うちの子」感覚で、AIへの愛着が湧く。続ければ続けるほど<strong>賢くなる楽しさ</strong>
+      </div>
+    </div>
+    <div class="benefit">
+      <span class="emoji">🔄</span>
+      <div class="text">
+        <strong>引き継ぎできる</strong>
+        指示書（CLAUDE.md）が残るから、<strong>パートナーや外注先にも</strong>同じ品質で頼める
+      </div>
+    </div>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 🎯 🌸</div>
+
+  <!-- ============= 動かし方の2スタイル ============= -->
+  <div id="chapter-run" class="section-header">
+    <span class="chapter">How to run</span>
+    <h2>どうやって動かすの？</h2>
+    <div class="sub">2つのスタイルがあります🎀</div>
+  </div>
+
+  <div class="concept">
+    <span class="emoji-big">🏃‍♀️ 👯‍♀️</span>
+    <span class="label">2つのスタイル</span>
+    <p>
+      <strong>① バトンリレー型</strong>（順番に渡す）<br>
+      <strong>② 同時マルチ型</strong>（並列で動かす）<br><br>
+      どっちもメリットがあるので<br>
+      <strong>場面ごとに使い分け</strong>るのがコツ🌸
+    </p>
+  </div>
+
+  <!-- バトンリレー型 -->
+  <div class="flow-card blue">
+    <div class="flow-title">🏃‍♀️ ①バトンリレー型</div>
+    <div class="flow-sub">ひとりずつ順番に仕事を渡していく</div>
+
+    <div class="relay-flow">
+      <div class="relay-node">
+        <div class="agent-avatar">🍑</div>
+        <div class="node-content">
+          <div class="node-name">もも（人事）</div>
+          「今週の企画はAの方向で」と方針決定
+        </div>
+      </div>
+      <div class="relay-arrow">↓ バトンを渡す</div>
+      <div class="relay-node">
+        <div class="agent-avatar">🗺️</div>
+        <div class="node-content">
+          <div class="node-name">なぎ（戦略）</div>
+          「具体的にこの順で進めよう」と設計
+        </div>
+      </div>
+      <div class="relay-arrow">↓</div>
+      <div class="relay-node">
+        <div class="agent-avatar">📐</div>
+        <div class="node-content">
+          <div class="node-name">こと（編集）</div>
+          できた原稿を整えて、最終仕上げ
+        </div>
+      </div>
+      <div class="relay-arrow">↓</div>
+      <div class="relay-node">
+        <div class="agent-avatar">📸</div>
+        <div class="node-content">
+          <div class="node-name">ほし（SNS）</div>
+          完成品をもとに発信用に展開
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros-box">
+        <div class="label">✿ メリット</div>
+        <ul>
+          <li>前の人の<strong>成果を踏まえて</strong>次が動くので品質が安定</li>
+          <li>途中で「ストップ」がかけられる安心感</li>
+          <li>使うエージェントが<strong>1人ずつ</strong>なので料金が読みやすい</li>
+          <li>非エンジニアでも<strong>感覚的に</strong>運用できる</li>
+        </ul>
+      </div>
+      <div class="cons-box">
+        <div class="label">⚠ デメリット・留意点</div>
+        <ul>
+          <li><strong>時間がかかる</strong>。前が終わらないと次に進めない</li>
+          <li>前のエージェントの<strong>出力に依存</strong>するので、最初がコケると全体が崩れる</li>
+          <li>引き継ぎ時に<strong>情報が抜け落ちる</strong>ことがある（人間のリレーと同じ）</li>
+          <li>毎回ママが「次は誰？」と<strong>司令を出す手間</strong>が発生</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="when-to-use">
+      <div class="title">🎀 こんなときに向いてます</div>
+      <div class="example">企画→制作→校正→発信、のような<strong>順序が重要な仕事</strong></div>
+      <div class="example">最終アウトプットの<strong>品質を担保したい</strong>とき</div>
+      <div class="example">初心者で、<strong>まず1本キレイに通したい</strong>とき</div>
+    </div>
+  </div>
+
+  <!-- 同時マルチ型 -->
+  <div class="flow-card purple">
+    <div class="flow-title">👯‍♀️ ②同時マルチ型</div>
+    <div class="flow-sub">複数のエージェントを並列で動かす</div>
+
+    <div class="parallel-header">同時に "せーの！" で動かす🌟</div>
+    <div class="parallel-flow">
+      <div class="parallel-node">
+        <div class="agent-avatar-small">🌤️</div>
+        <div class="node-name">そら</div>
+        データ分析中📊
+      </div>
+      <div class="parallel-node">
+        <div class="agent-avatar-small">🌈</div>
+        <div class="node-name">いろ</div>
+        デザイン作成中🎨
+      </div>
+      <div class="parallel-node">
+        <div class="agent-avatar-small">🌙</div>
+        <div class="node-name">つき</div>
+        スクリプト実行中⚙️
+      </div>
+      <div class="parallel-node">
+        <div class="agent-avatar-small">📚</div>
+        <div class="node-name">ふみ</div>
+        資料作成中📖
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros-box">
+        <div class="label">✿ メリット</div>
+        <ul>
+          <li><strong>圧倒的に速い</strong>。同じ時間で4倍働いてもらえる</li>
+          <li><strong>独立したタスク</strong>なら依存せずサクサク終わる</li>
+          <li>子どもがお昼寝してる間に<strong>一気に</strong>進められる</li>
+          <li>夜寝てる間に<strong>朝には全部終わってる</strong>感動体験💕</li>
+        </ul>
+      </div>
+      <div class="cons-box">
+        <div class="label">⚠ デメリット・留意点</div>
+        <ul>
+          <li><strong>PCのリソース</strong>を食う（バッテリー・メモリ・通信）</li>
+          <li>料金が<strong>同時にかさむ</strong>（プランの上限に注意）</li>
+          <li>各エージェントが<strong>勝手な方向</strong>に走ることがある</li>
+          <li>あとで結果を<strong>統合する人</strong>が必要（→人事のももの出番）</li>
+          <li>途中経過の把握が難しく、<strong>ミスに気付きにくい</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="when-to-use">
+      <div class="title">🎀 こんなときに向いてます</div>
+      <div class="example">タスク同士に<strong>依存関係がない</strong>とき</div>
+      <div class="example">急いで<strong>大量にこなしたい</strong>とき</div>
+      <div class="example">夜間バッチ・お昼寝時間など、<strong>まとまった時間が取れる</strong>とき</div>
+    </div>
+  </div>
+
+  <!-- 比較表 -->
+  <div class="vs-table">
+    <div class="vs-table-header">
+      <div></div>
+      <div>🏃‍♀️ リレー型</div>
+      <div>👯‍♀️ 並列型</div>
+    </div>
+    <div class="vs-table-row">
+      <div class="label">スピード</div>
+      <div>ゆっくり🐢</div>
+      <div>速い🐰</div>
+    </div>
+    <div class="vs-table-row">
+      <div class="label">品質</div>
+      <div>安定◎</div>
+      <div>バラつき△</div>
+    </div>
+    <div class="vs-table-row">
+      <div class="label">料金</div>
+      <div>読みやすい💰</div>
+      <div>かさみがち💰💰</div>
+    </div>
+    <div class="vs-table-row">
+      <div class="label">難易度</div>
+      <div>初心者◎</div>
+      <div>慣れてから🌟</div>
+    </div>
+    <div class="vs-table-row">
+      <div class="label">統合作業</div>
+      <div>不要</div>
+      <div>必要（人事役）</div>
+    </div>
+  </div>
+
+  <!-- ハイブリッド型 -->
+  <div class="staff-card pink">
+    <div class="badge">💡 おすすめの結論</div>
+    <div class="top-row">
+      <div class="avatar">✨</div>
+      <div class="name-block">
+        <div class="name">ハイブリッド運用</div>
+        <div class="role">いいとこ取りが最強</div>
+      </div>
+    </div>
+    <div class="description">
+      実は<strong>「リレーの中に並列を組み込む」</strong>のが上級者の使い方🌸
+    </div>
+    <div class="task-list">
+      <strong>🍓 ハイブリッド例</strong>
+      <strong style="color:var(--brown-dark); display:block; margin-top:6px;">①方針決定（リレー）</strong>
+      ももが今週の方針を決める<br><br>
+      <strong style="color:var(--brown-dark); display:block;">②並列で実行</strong>
+      なぎ・そら・いろが同時に動く🌟<br><br>
+      <strong style="color:var(--brown-dark); display:block;">③統合（リレーに戻る）</strong>
+      ことが全部まとめて仕上げ<br><br>
+      <strong style="color:var(--brown-dark); display:block;">④発信（リレー）</strong>
+      ほしが最後にSNS展開
+    </div>
+  </div>
+
+  <div class="speech-bubble">
+    <div class="who">📌 大事なポイント</div>
+    最初は<strong>リレー型から始めて</strong>、慣れてきたら一部を並列化していくのがオススメ🎀<br>
+    いきなり全部並列で動かすと、<strong>「あれ、誰が何やってるんだっけ？」</strong>と迷子になります💦
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 💻 🌸</div>
+
+  <!-- ============= 環境構築 ============= -->
+  <div id="chapter-env" class="section-header">
+    <span class="chapter">Environment</span>
+    <h2>並列で動かすには<br>何が必要？</h2>
+    <div class="sub">環境構築のおはなし🌷</div>
+  </div>
+
+  <div class="concept">
+    <span class="emoji-big">🛠️</span>
+    <span class="label">ざっくりまとめると</span>
+    <p>
+      並列処理には<strong>4つの道具</strong>が必要🌸<br><br>
+      ① <strong>Claude Code</strong>（本体）<br>
+      ② <strong>VSCode</strong>（操縦席）<br>
+      ③ <strong>Git worktree</strong>（作業場の分離）<br>
+      ④ <strong>tmux / ccmanager</strong>（複数同時操作）
+    </p>
+  </div>
+
+  <!-- ① Claude Code -->
+  <div class="env-card purple">
+    <div class="env-header">
+      <div class="env-icon">🤖</div>
+      <div>
+        <div class="env-name">① Claude Code</div>
+        <div class="env-role">エージェント本体</div>
+      </div>
+    </div>
+    <div class="env-desc">
+      これがないと始まらない<strong>主役</strong>🌟<br>
+      ターミナルで動くAIエージェントで、最近のバージョンから<strong>並列実行が標準サポート</strong>に。
+    </div>
+    <div class="env-detail">
+      <strong>💡 ポイント</strong>
+      バージョン2.1.49以降は<br>
+      <code>--worktree</code> オプションで簡単に並列起動できるようになりました✨
+    </div>
+    <div class="env-tags">
+      <span class="env-tag">必須</span>
+      <span class="env-tag">npm install</span>
+      <span class="env-tag">Pro以上推奨</span>
+    </div>
+  </div>
+
+  <!-- ② VSCode -->
+  <div class="env-card blue">
+    <div class="env-header">
+      <div class="env-icon">🖥️</div>
+      <div>
+        <div class="env-name">② VSCode</div>
+        <div class="env-role">エディタ・操縦席</div>
+      </div>
+    </div>
+    <div class="env-desc">
+      Microsoftが作った<strong>無料のエディタ</strong>。<br>
+      ファイル編集・ターミナル・拡張機能ぜんぶ入りで、<strong>司令室</strong>のような役割を果たします🌷
+    </div>
+    <div class="env-detail">
+      <strong>💡 並列処理での活躍ポイント</strong>
+      ・複数ターミナルを画面分割で開ける<br>
+      ・各worktreeの様子を一目で監視<br>
+      ・Claude Code拡張機能でさらに快適に
+    </div>
+    <div class="env-tags">
+      <span class="env-tag">無料</span>
+      <span class="env-tag">Win/Mac対応</span>
+      <span class="env-tag">拡張機能豊富</span>
+    </div>
+  </div>
+
+  <!-- ③ Git worktree -->
+  <div class="env-card orange">
+    <div class="env-header">
+      <div class="env-icon">🌳</div>
+      <div>
+        <div class="env-name">③ Git worktree</div>
+        <div class="env-role">作業場を分ける魔法</div>
+      </div>
+    </div>
+    <div class="env-desc">
+      ひとつのプロジェクトを<strong>複数の作業フォルダに分身</strong>させる技🌟<br>
+      これがないと、エージェント同士がぶつかってケンカします💦
+    </div>
+    <div class="env-detail">
+      <strong>💡 イメージで例えると</strong>
+      キッチンが1つだと料理を1品ずつしか作れないけど、<br>
+      <strong>分身キッチンを4つ作る</strong>と、4品同時に料理できる🍳<br>
+      （冷蔵庫=git本体は共有のまま）
+    </div>
+    <div class="env-tags">
+      <span class="env-tag">Git標準機能</span>
+      <span class="env-tag">独立環境</span>
+      <span class="env-tag">並列必須</span>
+    </div>
+  </div>
+
+  <!-- ④ tmux / ccmanager -->
+  <div class="env-card">
+    <div class="env-header">
+      <div class="env-icon">🎛️</div>
+      <div>
+        <div class="env-name">④ tmux または ccmanager</div>
+        <div class="env-role">複数セッション管理ツール</div>
+      </div>
+    </div>
+    <div class="env-desc">
+      複数のエージェントを<strong>一画面で同時監視</strong>できるツール。<br>
+      どっちか好きな方でOK🌷
+    </div>
+    <div class="env-detail">
+      <strong>🌸 tmux</strong>
+      昔からあるターミナル分割ツール。<br>
+      Claude Codeに <code>--tmux</code> オプションで連携できる<br><br>
+      <strong>🌷 ccmanager</strong>
+      Claude Code用に作られた専用ツール。<br>
+      <strong>tmuxよりカンタン</strong>で初心者向け✨<br>
+      Gemini / Codex などにも対応
+    </div>
+    <div class="env-tags">
+      <span class="env-tag">画面分割</span>
+      <span class="env-tag">同時監視</span>
+      <span class="env-tag">どちらか1つ</span>
+    </div>
+  </div>
+
+  <!-- 構成図 -->
+  <div class="architecture-diagram">
+    <div class="arch-title">🏗️ こんな構成で動かします</div>
+    <span class="arch-line"><span class="arch-comment"># VSCodeを開いて、画面を分割</span></span><br>
+    <span class="arch-line">┌──────────────┬──────────────┐</span><br>
+    <span class="arch-line">│ <span class="arch-highlight">そら</span>のキッチン │ <span class="arch-highlight">いろ</span>のキッチン │</span><br>
+    <span class="arch-line">│ 📊 分析中... │ 🎨 制作中... │</span><br>
+    <span class="arch-line">├──────────────┼──────────────┤</span><br>
+    <span class="arch-line">│ <span class="arch-highlight">つき</span>のキッチン │ <span class="arch-highlight">ふみ</span>のキッチン │</span><br>
+    <span class="arch-line">│ ⚙️ 自動化中..│ 📚 資料準備..│</span><br>
+    <span class="arch-line">└──────────────┴──────────────┘</span><br><br>
+    <span class="arch-line"><span class="arch-comment"># 各キッチン = git worktree</span></span><br>
+    <span class="arch-line"><span class="arch-comment"># 画面分割 = tmux または ccmanager</span></span><br>
+    <span class="arch-line"><span class="arch-comment"># 司令塔 = ママのVSCode 🎀</span></span>
+  </div>
+
+  <!-- スターターパック -->
+  <div class="starter-pack">
+    <h3>🎀 並列処理スターターパック 🎀</h3>
+    <div class="starter-item">
+      <div class="check">1</div>
+      <div>
+        <strong>Mac または Windows PC</strong>
+        メモリ16GB以上推奨（並列で重くなる）
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="check">2</div>
+      <div>
+        <strong>Node.js のインストール</strong>
+        Claude Codeを動かすのに必要
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="check">3</div>
+      <div>
+        <strong>VSCode のインストール</strong>
+        公式サイトから無料ダウンロード
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="check">4</div>
+      <div>
+        <strong>Claude Code のインストール</strong>
+        Pro以上のサブスク + npm install
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="check">5</div>
+      <div>
+        <strong>Git のセットアップ</strong>
+        プロジェクトをgit管理にしておく
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="check">6</div>
+      <div>
+        <strong>ccmanager または tmux</strong>
+        npxですぐ試せるccmanagerが初心者◎
+      </div>
+    </div>
+  </div>
+
+  <!-- 留意点 -->
+  <div class="caution-section" style="background:var(--yellow); border-radius:20px; padding:18px; margin-bottom:16px; border:2px solid var(--yellow-deep);">
+    <h3 style="color:#8d6e00; margin-bottom:10px; font-size:15px; font-weight:800;">⚠️ 環境構築で気をつけたいこと</h3>
+    <ul style="list-style:none; padding-left:0; font-size:12px; line-height:1.8;">
+      <li style="padding-left:18px; position:relative; margin-bottom:8px;">
+        <span style="position:absolute; left:0;">🌸</span>
+        <strong>PCのスペック</strong>：4並列ならメモリ16GB、6並列以上なら32GB推奨
+      </li>
+      <li style="padding-left:18px; position:relative; margin-bottom:8px;">
+        <span style="position:absolute; left:0;">🌸</span>
+        <strong>料金プラン</strong>：並列実行は<strong>Max plan ($100/月)以上</strong>がオススメ。Proだと上限にすぐ達します
+      </li>
+      <li style="padding-left:18px; position:relative; margin-bottom:8px;">
+        <span style="position:absolute; left:0;">🌸</span>
+        <strong>worktreeの整理</strong>：放置すると増えすぎてカオスに。定期的にお掃除を
+      </li>
+      <li style="padding-left:18px; position:relative; margin-bottom:8px;">
+        <span style="position:absolute; left:0;">🌸</span>
+        <strong>同じファイルの編集競合</strong>：別worktreeでも結局1つのプロジェクトに統合するので、最後にコンフリクト解決が必要
+      </li>
+      <li style="padding-left:18px; position:relative; margin-bottom:8px;">
+        <span style="position:absolute; left:0;">🌸</span>
+        <strong>ネット環境</strong>：複数同時にAPI叩くので、Wi-Fi弱いとつらい💦
+      </li>
+    </ul>
+  </div>
+
+  <!-- 段階的導入 -->
+  <div class="staff-card pink">
+    <div class="badge">🌷 ステップアップ提案</div>
+    <div class="top-row">
+      <div class="avatar">🪜</div>
+      <div class="name-block">
+        <div class="name">段階的に導入しよう</div>
+        <div class="role">いきなり全部は無理！</div>
+      </div>
+    </div>
+    <div class="task-list">
+      <strong>🍓 3ステップでレベルアップ</strong>
+      <strong style="color:var(--brown-dark); display:block; margin-top:6px;">Lv.1：ターミナル1つでOK</strong>
+      Claude Codeを1つだけ動かす。<br>
+      まずはClaude Codeに慣れる🌸<br><br>
+      <strong style="color:var(--brown-dark); display:block;">Lv.2：VSCode + worktree 2並列</strong>
+      画面分割して2人同時に動かす🎀<br>
+      ここでgit worktreeを覚える<br><br>
+      <strong style="color:var(--brown-dark); display:block;">Lv.3：ccmanagerで4〜6並列</strong>
+      本格的なチーム運用✨<br>
+      Max planを検討する段階
+    </div>
+  </div>
+
+  <div class="speech-bubble">
+    <div class="who">📌 ぶっちゃけ話</div>
+    並列処理は<strong>「ロマン技術」</strong>でもあります🎀<br>
+    実は<strong>リレー型を極めるだけでも</strong>十分すごい成果が出るので、無理に並列化を急がなくてもOK✨
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 🌟 🌸</div>
+
+  <!-- 始め方 -->
+  <div id="chapter-start" class="section-header">
+    <span class="chapter">Start Guide</span>
+    <h2>あなたも作ってみよう🎀</h2>
+    <div class="sub">小さく始めるのがコツ</div>
+  </div>
+
+  <div class="start-guide">
+    <h3>🌷 3ステップではじめる 🌷</h3>
+
+    <div class="start-step">
+      <div class="step-title">STEP 1: まず1人だけ作る</div>
+      <div class="step-detail">
+        いきなり9人は無理！<br>
+        まずは「献立担当」「保活担当」など、<strong>一番困ってる領域の1人</strong>から始めましょう🌸
+      </div>
+    </div>
+
+    <div class="start-step">
+      <div class="step-title">STEP 2: 名前と性格を決める</div>
+      <div class="step-detail">
+        例：「ミルキー（離乳食担当・1〜3歳の専門知識・優しい口調）」<br>
+        <strong>名前があるだけで愛着UP</strong>します💕
+      </div>
+    </div>
+
+    <div class="start-step">
+      <div class="step-title">STEP 3: 使いながら育てる</div>
+      <div class="step-detail">
+        最初は不完全でOK。「もうちょっと簡潔に」「アレルギーは絶対チェックして」など<strong>毎回フィードバック</strong>して、指示書を更新していけば賢くなります✨
+      </div>
+    </div>
+  </div>
+
+  <!-- 育成のコツ -->
+  <div class="staff-card pink">
+    <div class="badge">💡 育成のコツ</div>
+    <div class="top-row">
+      <div class="avatar">🌱</div>
+      <div class="name-block">
+        <div class="name">育成 4箇条</div>
+        <div class="role">うちの子を賢く育てるには</div>
+      </div>
+    </div>
+    <div class="task-list">
+      <strong>🍓 4つのポイント</strong>
+      <strong style="color:var(--brown-dark); margin-top:8px; display:block;">① 役割は1つに絞る</strong>
+      全部できる子より、専門家を作る<br><br>
+      <strong style="color:var(--brown-dark); display:block;">② 性格・口調を決める</strong>
+      「優しい」「論理的」など具体的に<br><br>
+      <strong style="color:var(--brown-dark); display:block;">③ NGリストを書く</strong>
+      「やってはいけないこと」が重要<br><br>
+      <strong style="color:var(--brown-dark); display:block;">④ 良かった応答を残す</strong>
+      「この返し方好き」をメモして再現
+    </div>
+  </div>
+
+  <div class="divider">🌸 📋 🌸</div>
+
+  <!-- まとめ表 -->
+  <div class="summary-table">
+    <h3>📊 うちのスタッフ一覧 📊</h3>
+    <div class="table-row">
+      <div class="term">もも</div>
+      <div>チーム人事マネージャー</div>
+    </div>
+    <div class="table-row">
+      <div class="term">そら</div>
+      <div>データ分析の参謀</div>
+    </div>
+    <div class="table-row">
+      <div class="term">こと</div>
+      <div>編集・校正担当</div>
+    </div>
+    <div class="table-row">
+      <div class="term">つき</div>
+      <div>夜間自動化の働き者</div>
+    </div>
+    <div class="table-row">
+      <div class="term">なぎ</div>
+      <div>戦略・方向性パートナー</div>
+    </div>
+    <div class="table-row">
+      <div class="term">いろ</div>
+      <div>総合デザイナー</div>
+    </div>
+    <div class="table-row">
+      <div class="term">れん</div>
+      <div>営業・対外対応</div>
+    </div>
+    <div class="table-row">
+      <div class="term">ふみ</div>
+      <div>学習サポート先生</div>
+    </div>
+    <div class="table-row">
+      <div class="term">ほし</div>
+      <div>SNSの新星⭐</div>
+    </div>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <div class="deco">🌸 👥 ✨ 👥 🌸</div>
+    <p>
+      最初は1人からで大丈夫🌷<br>
+      使いながら少しずつ育てていけば、<br>
+      気づいたら頼れるチームに🎀<br><br>
+      <strong style="color:var(--pink-dark)">「ひとりじゃない子育て」</strong>を、<br>
+      AIスタッフと一緒に始めましょう💕
+    </p>
+    <div class="signature">
+      〜 リベシティ 赤ちゃんを愛でる会 5/29 〜<br>
+      Claudeパパママ講座 第3巻：チーム編
+    </div>
+  </div>
+
+</div>
+
+<!-- フローティング目次ボタン -->
+<a href="#toc" class="floating-toc-btn" aria-label="目次へ戻る">🔝</a>
+
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>赤ちゃんパパママのためのClaude活用講座</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-bg: #fce4ec;
+    --pink-soft: #fde7ed;
+    --pink-deep: #f8bbd0;
+    --pink-accent: #f48fb1;
+    --pink-dark: #c2185b;
+    --cream: #fff8f0;
+    --mint: #b2dfdb;
+    --mint-soft: #d4eeec;
+    --yellow: #fff3b0;
+    --brown: #8d6e63;
+    --brown-dark: #5d4037;
+    --text: #5d4037;
+    --text-soft: #8d6e63;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+    background: var(--pink-bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* 背景の装飾 */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 10% 5%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 90% 15%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px),
+      radial-gradient(circle at 80% 60%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 50% 85%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px);
+    background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px, 190px 190px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ヘッダー */
+  .header {
+    text-align: center;
+    padding: 30px 16px 24px;
+    position: relative;
+  }
+
+  .header .deco-top {
+    font-size: 24px;
+    margin-bottom: 8px;
+    letter-spacing: 8px;
+  }
+
+  .header h1 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: var(--pink-dark);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 0 var(--white);
+  }
+
+  .header h1 .small {
+    display: block;
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .header .subtitle {
+    display: inline-block;
+    background: var(--white);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--pink-dark);
+    font-weight: 700;
+    border: 2px dashed var(--pink-accent);
+    margin-top: 8px;
+  }
+
+  /* リード文 */
+  .lead {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 0 var(--pink-deep);
+    border: 3px solid var(--pink-deep);
+    position: relative;
+  }
+
+  .lead::before {
+    content: '🍼';
+    position: absolute;
+    top: -16px;
+    left: 20px;
+    font-size: 28px;
+    background: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--pink-deep);
+  }
+
+  .lead p {
+    font-size: 14px;
+    line-height: 1.9;
+    margin-top: 8px;
+  }
+
+  .lead .highlight {
+    background: linear-gradient(transparent 60%, var(--yellow) 60%);
+    font-weight: 700;
+  }
+
+  /* セクションタイトル */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0 20px;
+    padding: 0 8px;
+  }
+
+  .section-title .badge {
+    background: var(--pink-accent);
+    color: var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 16px;
+    box-shadow: 0 3px 0 var(--pink-dark);
+    flex-shrink: 0;
+  }
+
+  .section-title h2 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--brown-dark);
+    line-height: 1.3;
+  }
+
+  .section-title .icon {
+    font-size: 22px;
+  }
+
+  /* Claudeとは カード */
+  .intro-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 4px 0 var(--pink-deep);
+  }
+
+  .intro-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--pink-dark);
+    font-size: 16px;
+    margin-bottom: 12px;
+    font-weight: 800;
+  }
+
+  .intro-card p {
+    font-size: 14px;
+  }
+
+  /* ユースケースカード */
+  .use-case {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 22px 20px;
+    margin-bottom: 18px;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 5px 0 var(--pink-deep);
+    position: relative;
+  }
+
+  .use-case .num {
+    position: absolute;
+    top: -14px;
+    left: 16px;
+    background: var(--pink-accent);
+    color: var(--white);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    box-shadow: 0 2px 0 var(--pink-dark);
+  }
+
+  .use-case h3 {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--brown-dark);
+    margin: 6px 0 12px;
+    line-height: 1.4;
+  }
+
+  .use-case .emoji {
+    font-size: 22px;
+    margin-right: 4px;
+  }
+
+  .use-case .scene {
+    background: var(--pink-soft);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .use-case .scene strong {
+    color: var(--pink-dark);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+  }
+
+  .use-case .prompt {
+    background: var(--mint-soft);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.7;
+    font-family: 'Klee One', serif;
+    border-left: 4px solid var(--mint);
+  }
+
+  .use-case .prompt strong {
+    color: #00695c;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+  }
+
+  .use-case .result {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    padding: 4px 4px 0;
+  }
+
+  .use-case .result strong {
+    color: var(--pink-dark);
+  }
+
+  /* タグ */
+  .tag-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .tag {
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+  }
+
+  .tag-free { background: var(--mint); color: #00695c; }
+  .tag-pro { background: var(--yellow); color: #8d6e00; }
+  .tag-easy { background: #d1c4e9; color: #4527a0; }
+
+  /* 質問テンプレート */
+  .templates {
+    background: var(--cream);
+    border-radius: 24px;
+    padding: 24px 20px;
+    margin-bottom: 18px;
+    border: 3px dashed var(--pink-accent);
+  }
+
+  .templates h3 {
+    text-align: center;
+    color: var(--pink-dark);
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .template-item {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.7;
+    font-family: 'Klee One', serif;
+    border-left: 4px solid var(--pink-accent);
+    position: relative;
+  }
+
+  .template-item::before {
+    content: '💬';
+    margin-right: 6px;
+  }
+
+  /* 始め方 */
+  .start-steps {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 24px 20px;
+    margin-bottom: 18px;
+    border: 2px solid var(--mint);
+    box-shadow: 0 4px 0 var(--mint);
+  }
+
+  .start-steps h3 {
+    text-align: center;
+    color: #00695c;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+
+  .step .step-num {
+    background: var(--mint);
+    color: #00695c;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .step .step-text {
+    font-size: 13px;
+    line-height: 1.7;
+    padding-top: 2px;
+  }
+
+  .step .step-text strong {
+    color: var(--brown-dark);
+  }
+
+  /* 注意 */
+  .caution {
+    background: #fff3b0;
+    border-radius: 20px;
+    padding: 18px 18px;
+    margin-bottom: 18px;
+    border: 2px solid #ffd54f;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .caution h3 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #8d6e00;
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  .caution ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .caution li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+
+  .caution li::before {
+    content: '🌸';
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+  }
+
+  /* フッター */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 30px;
+  }
+
+  .footer .deco {
+    font-size: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 10px;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.8;
+  }
+
+  .footer .signature {
+    margin-top: 16px;
+    font-weight: 700;
+    color: var(--pink-dark);
+    font-size: 14px;
+  }
+
+  /* 浮かぶデコレーション */
+  .float-deco {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="deco-top">🧸 🍼 🐻 🍼 🧸</div>
+    <h1>
+      <span class="small">〜 パパママのための 〜</span>
+      Claudeで子育てを<br>ちょっとラクに♡
+    </h1>
+    <div class="subtitle">スマホひとつではじめるAI活用</div>
+  </header>
+
+  <!-- リード -->
+  <div class="lead">
+    <p>
+      「ごはんなに作ろう」「保育園のおたよりどこ？」<br>
+      <span class="highlight">毎日の小さなモヤモヤ</span>、ぜんぶAIに相談しちゃいませんか？🍼<br><br>
+      この資料では、<span class="highlight">スマホだけ</span>で今日から使えるClaudeの使い方をご紹介します✨
+    </p>
+  </div>
+
+  <!-- Claudeとは -->
+  <div class="section-title">
+    <span class="badge">?</span>
+    <h2><span class="icon">🐻</span>そもそもClaudeって？</h2>
+  </div>
+
+  <div class="intro-card">
+    <h3>🌷 やさしくて賢いAIアシスタント</h3>
+    <p>
+      ChatGPTの「やさしい版」と思ってください。<br>
+      <strong style="color:var(--pink-dark)">スマホアプリを入れるだけ</strong>で、24時間あなたの相談相手になってくれます。
+    </p>
+  </div>
+
+  <div class="intro-card">
+    <h3>💕 こんな相談ができるよ</h3>
+    <p>
+      ✿ 献立・離乳食の相談<br>
+      ✿ 写真を見せて「これ何？」と聞く<br>
+      ✿ 保育園に出す文章の下書き<br>
+      ✿ 子育てのモヤモヤを話す<br>
+      ✿ お薬の飲み合わせの心配を整理
+    </p>
+  </div>
+
+  <!-- ユースケース -->
+  <div class="section-title">
+    <span class="badge">1</span>
+    <h2><span class="icon">🍼</span>今日の献立、もう悩まない</h2>
+  </div>
+
+  <div class="use-case">
+    <div class="num">CASE 01</div>
+    <div class="tag-row">
+      <span class="tag tag-free">無料OK</span>
+      <span class="tag tag-easy">かんたん</span>
+    </div>
+    <h3><span class="emoji">🥕</span>冷蔵庫の中身から献立提案</h3>
+    <div class="scene">
+      <strong>こんな時に</strong>
+      仕事から帰って、買い物に行く気力もない…
+    </div>
+    <div class="prompt">
+      <strong>こう聞いてみよう</strong>
+      「冷蔵庫に鶏むね肉と豆腐とにんじんがあります。1歳の子も食べられて、15分でできる夕食を3案ください」
+    </div>
+    <div class="result">
+      <strong>→ できること：</strong>取り分けレシピも一緒に、月齢に合わせた切り方まで教えてくれる🥄
+    </div>
+  </div>
+
+  <div class="use-case">
+    <div class="num">CASE 02</div>
+    <div class="tag-row">
+      <span class="tag tag-free">無料OK</span>
+      <span class="tag tag-easy">かんたん</span>
+    </div>
+    <h3><span class="emoji">📸</span>写真を撮るだけで食材判定</h3>
+    <div class="scene">
+      <strong>こんな時に</strong>
+      実家からもらった謎の食材、これ離乳食に使える？
+    </div>
+    <div class="prompt">
+      <strong>こう聞いてみよう</strong>
+      写真を撮ってアップロード →「この野菜は1歳の離乳食に使えますか？下ごしらえも教えて」
+    </div>
+    <div class="result">
+      <strong>→ できること：</strong>写真から食材を特定して、月齢別の調理法を提案🍳
+    </div>
+  </div>
+
+  <!-- セクション2 -->
+  <div class="section-title">
+    <span class="badge">2</span>
+    <h2><span class="icon">🧸</span>「言葉にできない」を手伝って</h2>
+  </div>
+
+  <div class="use-case">
+    <div class="num">CASE 03</div>
+    <div class="tag-row">
+      <span class="tag tag-free">無料OK</span>
+    </div>
+    <h3><span class="emoji">📝</span>保育園の連絡帳の下書き</h3>
+    <div class="scene">
+      <strong>こんな時に</strong>
+      先生に伝えたいけど、文章にまとめる時間がない…
+    </div>
+    <div class="prompt">
+      <strong>こう聞いてみよう</strong>
+      「最近2歳の息子が夜泣きします。原因がわからず困っていることを、先生に相談する連絡帳を200字でやさしい言葉で書いて」
+    </div>
+    <div class="result">
+      <strong>→ できること：</strong>角の立たない文章で、要点だけスッキリまとめてくれる✏️
+    </div>
+  </div>
+
+  <div class="use-case">
+    <div class="num">CASE 04</div>
+    <div class="tag-row">
+      <span class="tag tag-free">無料OK</span>
+    </div>
+    <h3><span class="emoji">💌</span>ママ友・義実家への返信</h3>
+    <div class="scene">
+      <strong>こんな時に</strong>
+      気を遣う相手への返信、どう書けば…
+    </div>
+    <div class="prompt">
+      <strong>こう聞いてみよう</strong>
+      「義母から『来週遊びに行っていい？』とLINEが来ました。今週末は予防接種で疲れそうなので、来月にしてほしいことを失礼なく断る文章を3パターン作って」
+    </div>
+    <div class="result">
+      <strong>→ できること：</strong>関係性を壊さない断り方を、複数パターンで提案💐
+    </div>
+  </div>
+
+  <!-- セクション3 -->
+  <div class="section-title">
+    <span class="badge">3</span>
+    <h2><span class="icon">🏥</span>夜中の「これって大丈夫？」</h2>
+  </div>
+
+  <div class="use-case">
+    <div class="num">CASE 05</div>
+    <div class="tag-row">
+      <span class="tag tag-free">無料OK</span>
+    </div>
+    <h3><span class="emoji">🌙</span>受診前の状況整理</h3>
+    <div class="scene">
+      <strong>こんな時に</strong>
+      夜中に熱、救急に行くか迷う…
+    </div>
+    <div class="prompt">
+      <strong>こう聞いてみよう</strong>
+      「3歳、熱38.5度、機嫌は普通、水分は飲める、食欲は半分。明日の朝まで様子を見ていい目安と、すぐ受診すべきサインを教えて」
+    </div>
+    <div class="result">
+      <strong>→ できること：</strong>慌てず判断材料を整理。<strong>※最終判断は#8000や医師へ</strong>👨‍⚕️
+    </div>
+  </div>
+
+  <div class="use-case">
+    <div class="num">CASE 06</div>
+    <div class="tag-row">
+      <span class="tag tag-free">無料OK</span>
+    </div>
+    <h3><span class="emoji">🩺</span>受診メモの準備</h3>
+    <div class="scene">
+      <strong>こんな時に</strong>
+      診察室で「いつから？」と聞かれてうまく答えられない
+    </div>
+    <div class="prompt">
+      <strong>こう聞いてみよう</strong>
+      「子どもの症状を時系列でメモしたい。私が話すことを箇条書きに整理して」<br>→ あとは普通に話すだけ
+    </div>
+    <div class="result">
+      <strong>→ できること：</strong>診察の3分で伝えるべきポイントが整う📋
+    </div>
+  </div>
+
+  <!-- セクション4 -->
+  <div class="section-title">
+    <span class="badge">4</span>
+    <h2><span class="icon">💭</span>ひとりじゃない、話し相手に</h2>
+  </div>
+
+  <div class="use-case">
+    <div class="num">CASE 07</div>
+    <div class="tag-row">
+      <span class="tag tag-free">無料OK</span>
+    </div>
+    <h3><span class="emoji">☕</span>ただ話を聞いてもらう</h3>
+    <div class="scene">
+      <strong>こんな時に</strong>
+      誰かに聞いてほしいけど、迷惑かけたくない…
+    </div>
+    <div class="prompt">
+      <strong>こう聞いてみよう</strong>
+      「今日イライラして子どもに強く言ってしまった。アドバイスはいらないから、ただ話を聞いてほしい」
+    </div>
+    <div class="result">
+      <strong>→ できること：</strong>夜中でも、何度同じ話をしても、否定されない安心感🌷
+    </div>
+  </div>
+
+  <!-- 質問テンプレート -->
+  <div class="section-title">
+    <span class="badge">★</span>
+    <h2><span class="icon">✨</span>そのままコピペで使える</h2>
+  </div>
+
+  <div class="templates">
+    <h3>🎀 魔法のプロンプト集 🎀</h3>
+    <div class="template-item">
+      今晩の献立を3案。1歳と4歳が一緒に食べられて、調理20分以内で。
+    </div>
+    <div class="template-item">
+      この保育園のおたより（写真）から、今月の持ち物と行事だけ抜き出して。
+    </div>
+    <div class="template-item">
+      2歳のイヤイヤ期に効く声かけを、シチュエーション別に5つ教えて。
+    </div>
+    <div class="template-item">
+      育休明けの上司への挨拶メールを、感謝を込めて150字で。
+    </div>
+    <div class="template-item">
+      家族旅行（子ども0歳・3歳）の持ち物リストをチェックボックス形式で。
+    </div>
+    <div class="template-item">
+      今日あったモヤモヤをただ聞いてほしい。否定や提案はしないで。
+    </div>
+  </div>
+
+  <!-- 始め方 -->
+  <div class="section-title">
+    <span class="badge">📱</span>
+    <h2><span class="icon">🌟</span>はじめかた（3ステップ）</h2>
+  </div>
+
+  <div class="start-steps">
+    <h3>🍓 3分で完了！</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>アプリストアで「Claude」を検索</strong><br>
+        オレンジ色の星マークが目印⭐
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>メールアドレスで登録</strong><br>
+        Google・Appleアカウントでもログイン可能
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>無料プランで話しかけてみよう</strong><br>
+        まずは「献立を3案教えて」から💕
+      </div>
+    </div>
+  </div>
+
+  <!-- 注意点 -->
+  <div class="caution">
+    <h3>🌷 つかうときの、やさしい約束</h3>
+    <ul>
+      <li>子どもの本名・住所・園名は入力しない</li>
+      <li>医療の最終判断はかならずお医者さんへ</li>
+      <li>AIも間違えるので、大事な情報は確認を</li>
+      <li>無料プランは1日の会話量に上限あり</li>
+    </ul>
+  </div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <div class="deco">🌸 🐻 🍼 🐻 🌸</div>
+    <p>
+      まずはひとつ、気になったものから<br>
+      話しかけてみてくださいね🌷<br><br>
+      AIは「完璧な答え」じゃなく<br>
+      「今日のちょっとラク」を運んでくれます☕
+    </p>
+    <div class="signature">
+      〜 リベシティ 赤ちゃんを愛でる会 5/29 〜
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

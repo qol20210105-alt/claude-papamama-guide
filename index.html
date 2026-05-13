@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>パパママのためのClaude活用ガイド📚</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-bg: #fce4ec;
+    --pink-soft: #fde7ed;
+    --pink-deep: #f8bbd0;
+    --pink-accent: #f48fb1;
+    --pink-dark: #c2185b;
+    --cream: #fff8f0;
+    --mint: #b2dfdb;
+    --mint-soft: #d4eeec;
+    --yellow: #fff3b0;
+    --yellow-deep: #ffd54f;
+    --purple: #ce93d8;
+    --purple-dark: #6a1b9a;
+    --blue: #90caf9;
+    --blue-dark: #1565c0;
+    --brown-dark: #5d4037;
+    --text: #5d4037;
+    --text-soft: #8d6e63;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+    background: var(--pink-bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 10% 5%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 90% 15%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px),
+      radial-gradient(circle at 80% 60%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 50% 85%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px);
+    background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px, 190px 190px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    text-align: center;
+    padding: 30px 16px 24px;
+  }
+
+  .header .deco-top {
+    font-size: 24px;
+    margin-bottom: 8px;
+    letter-spacing: 8px;
+  }
+
+  .header h1 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--pink-dark);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 0 var(--white);
+  }
+
+  .header h1 .small {
+    display: block;
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .header .subtitle {
+    display: inline-block;
+    background: var(--white);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--pink-dark);
+    font-weight: 700;
+    border: 2px dashed var(--pink-accent);
+    margin-top: 8px;
+  }
+
+  .lead {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 28px 20px 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 0 var(--pink-deep);
+    border: 3px solid var(--pink-deep);
+    position: relative;
+  }
+
+  .lead::before {
+    content: '📚';
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    font-size: 26px;
+    background: var(--white);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--pink-deep);
+  }
+
+  .lead h2 {
+    font-size: 17px;
+    color: var(--pink-dark);
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .lead p {
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .lead .highlight {
+    background: linear-gradient(transparent 60%, var(--yellow) 60%);
+    font-weight: 700;
+  }
+
+  /* セクションタイトル */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 36px 0 18px;
+    padding: 0 4px;
+  }
+
+  .section-title .badge {
+    background: var(--pink-accent);
+    color: var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    box-shadow: 0 3px 0 var(--pink-dark);
+    flex-shrink: 0;
+  }
+
+  .section-title h2 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 19px;
+    color: var(--brown-dark);
+    line-height: 1.3;
+  }
+
+  /* 本棚 */
+  .bookshelf {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 36px;
+  }
+
+  .volume-card {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--white);
+    border-radius: 24px;
+    padding: 24px 20px 22px;
+    border: 3px solid var(--pink-deep);
+    box-shadow: 0 6px 0 var(--pink-deep);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .volume-card:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 var(--pink-deep);
+  }
+
+  .volume-card .vol-badge {
+    display: inline-block;
+    background: var(--pink-accent);
+    color: var(--white);
+    padding: 4px 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 0 var(--pink-dark);
+  }
+
+  .volume-card .emoji {
+    font-size: 38px;
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  .volume-card h3 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-weight: 900;
+    font-size: 19px;
+    color: var(--pink-dark);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .volume-card .subtitle {
+    font-size: 13px;
+    color: var(--text-soft);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .volume-card .description {
+    font-size: 13.5px;
+    line-height: 1.8;
+    background: var(--pink-soft);
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+
+  .volume-card .topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .volume-card .tag {
+    font-size: 11px;
+    padding: 4px 11px;
+    border-radius: 12px;
+    background: var(--mint-soft);
+    color: #00695c;
+    font-weight: 700;
+  }
+
+  .volume-card .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 2px dashed var(--pink-deep);
+  }
+
+  .volume-card .read-time {
+    font-size: 12px;
+    color: var(--text-soft);
+    font-weight: 700;
+  }
+
+  .volume-card .open-hint {
+    font-size: 13px;
+    color: var(--pink-dark);
+    font-weight: 800;
+  }
+
+  /* 2巻目はミント、3巻目はパープルでアクセント */
+  .volume-card.vol2 {
+    border-color: var(--mint);
+    box-shadow: 0 6px 0 var(--mint);
+  }
+  .volume-card.vol2:active {
+    box-shadow: 0 3px 0 var(--mint);
+  }
+  .volume-card.vol2 .vol-badge {
+    background: #4db6ac;
+    box-shadow: 0 2px 0 #00695c;
+  }
+  .volume-card.vol2 h3 { color: #00695c; }
+  .volume-card.vol2 .description { background: var(--mint-soft); }
+  .volume-card.vol2 .tag { background: var(--pink-soft); color: var(--pink-dark); }
+  .volume-card.vol2 .meta { border-top-color: var(--mint); }
+  .volume-card.vol2 .open-hint { color: #00695c; }
+
+  .volume-card.vol3 {
+    border-color: var(--purple);
+    box-shadow: 0 6px 0 var(--purple);
+  }
+  .volume-card.vol3:active {
+    box-shadow: 0 3px 0 var(--purple);
+  }
+  .volume-card.vol3 .vol-badge {
+    background: var(--purple);
+    box-shadow: 0 2px 0 var(--purple-dark);
+  }
+  .volume-card.vol3 h3 { color: var(--purple-dark); }
+  .volume-card.vol3 .description { background: #f3e5f5; }
+  .volume-card.vol3 .tag { background: var(--yellow); color: #6d4c00; }
+  .volume-card.vol3 .meta { border-top-color: var(--purple); }
+  .volume-card.vol3 .open-hint { color: var(--purple-dark); }
+
+  /* ガイド */
+  .guide {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 22px 20px;
+    margin-bottom: 28px;
+    border: 2px solid var(--yellow-deep);
+    box-shadow: 0 4px 0 var(--yellow-deep);
+  }
+
+  .guide h3 {
+    font-size: 16px;
+    color: var(--brown-dark);
+    margin-bottom: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .guide ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .guide li {
+    font-size: 13.5px;
+    line-height: 1.7;
+    padding-left: 26px;
+    position: relative;
+  }
+
+  .guide li::before {
+    content: '🌸';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 14px;
+  }
+
+  .guide li strong {
+    color: var(--pink-dark);
+    font-weight: 800;
+  }
+
+  /* フッター */
+  .footer {
+    text-align: center;
+    padding: 30px 16px 10px;
+    font-size: 12px;
+    color: var(--text-soft);
+    line-height: 1.8;
+  }
+
+  .footer .heart {
+    color: var(--pink-accent);
+    font-size: 16px;
+    margin: 0 4px;
+  }
+
+  .footer .meta-line {
+    margin-top: 8px;
+    font-size: 11px;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <div class="deco-top">🌸 📚 🌸</div>
+    <h1>
+      <span class="small">パパママのための</span>
+      Claude活用ガイド
+    </h1>
+    <div class="subtitle">リベシティ 赤ちゃんを愛でる会 5/29</div>
+  </header>
+
+  <section class="lead">
+    <h2>3冊の小さな本棚へようこそ♡</h2>
+    <p>
+      子育てに、家事に、ちょっとした調べものに。<br>
+      <span class="highlight">スマホ1つでAI(Claude)が頼れる相棒に</span>なる方法を、
+      3冊の本にまとめました📖<br>
+      お気に入りの1冊から、自由に開いてみてくださいね。
+    </p>
+  </section>
+
+  <div class="section-title">
+    <span class="badge">📖</span>
+    <h2>本棚をひらく</h2>
+  </div>
+
+  <div class="bookshelf">
+
+    <a class="volume-card vol1" href="./claude_for_parents.html">
+      <span class="vol-badge">Vol.1 / 入門編</span>
+      <span class="emoji">🍼</span>
+      <h3>Claudeで子育てを<br>ちょっとラクに♡</h3>
+      <div class="subtitle">〜スマホだけでOK・はじめての一歩〜</div>
+      <div class="description">
+        Claudeってなに？から、寝かしつけ・離乳食・夜泣き相談まで。
+        スマホ1つで今日から使えるパパママ向けの入門ガイドです。
+      </div>
+      <div class="topics">
+        <span class="tag">#はじめて</span>
+        <span class="tag">#スマホでOK</span>
+        <span class="tag">#子育て相談</span>
+        <span class="tag">#コピペプロンプト</span>
+      </div>
+      <div class="meta">
+        <span class="read-time">⏱️ 読了目安：約10分</span>
+        <span class="open-hint">ひらく →</span>
+      </div>
+    </a>
+
+    <a class="volume-card vol2" href="./claude_terms_for_parents.html">
+      <span class="vol-badge">Vol.2 / 中級編</span>
+      <span class="emoji">💻</span>
+      <h3>用語のモヤモヤを<br>スッキリ解決🌸</h3>
+      <div class="subtitle">〜AI・Claudeの「？」を一気に解消〜</div>
+      <div class="description">
+        プロンプト？トークン？エージェント？……ニュースで見かけるAI用語を、
+        パパママ目線でやさしく解説。次のステップに進みたい方へ。
+      </div>
+      <div class="topics">
+        <span class="tag">#用語解説</span>
+        <span class="tag">#中級ステップ</span>
+        <span class="tag">#目次つき</span>
+        <span class="tag">#辞書がわり</span>
+      </div>
+      <div class="meta">
+        <span class="read-time">⏱️ 読了目安：約15分</span>
+        <span class="open-hint">ひらく →</span>
+      </div>
+    </a>
+
+    <a class="volume-card vol3" href="./agent_team.html">
+      <span class="vol-badge">Vol.3 / 実践編</span>
+      <span class="emoji">👥</span>
+      <h3>うちのAIチーム<br>紹介します🎀</h3>
+      <div class="subtitle">〜もも・そら・こと・つき…9人のなかま〜</div>
+      <div class="description">
+        役割ごとに分かれた9人のエージェント（AIのなかま）を紹介。
+        Claudeを「チーム」として動かす、ちょっと先のワクワクする使い方。
+      </div>
+      <div class="topics">
+        <span class="tag">#エージェント</span>
+        <span class="tag">#9人のなかま</span>
+        <span class="tag">#実践編</span>
+        <span class="tag">#一歩先へ</span>
+      </div>
+      <div class="meta">
+        <span class="read-time">⏱️ 読了目安：約20分</span>
+        <span class="open-hint">ひらく →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <section class="guide">
+    <h3>🌷 どこから読めばいい？</h3>
+    <ul>
+      <li><strong>はじめての方</strong>は、まず <strong>第1巻（入門編）</strong> からどうぞ。スマホだけで今日から始められます。</li>
+      <li><strong>用語でつまずいた</strong>ら、<strong>第2巻（用語解説）</strong> を辞書がわりにめくってみてください。</li>
+      <li><strong>もっと使いこなしたい</strong>方は、<strong>第3巻（エージェントチーム編）</strong> でAIの「チームプレー」を覗いてみましょう。</li>
+      <li>もちろん、気になったところから<strong>つまみ食い</strong>もOKです♡</li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <div>made with <span class="heart">♡</span> for 赤ちゃんを愛でる会</div>
+    <div class="meta-line">2026.05.29 / パパママのためのClaude活用ガイド</div>
+  </footer>
+
+</div>
+</body>
+</html>

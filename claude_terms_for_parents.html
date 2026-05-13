@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>もうちょっと知りたいパパママのためのClaude技術用語</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@500;700;900&family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-bg: #fce4ec;
+    --pink-soft: #fde7ed;
+    --pink-deep: #f8bbd0;
+    --pink-accent: #f48fb1;
+    --pink-dark: #c2185b;
+    --cream: #fff8f0;
+    --mint: #b2dfdb;
+    --mint-soft: #d4eeec;
+    --mint-dark: #00695c;
+    --yellow: #fff3b0;
+    --yellow-deep: #ffd54f;
+    --purple-soft: #e1bee7;
+    --purple: #ce93d8;
+    --purple-dark: #6a1b9a;
+    --blue-soft: #bbdefb;
+    --blue: #90caf9;
+    --blue-dark: #1565c0;
+    --brown: #8d6e63;
+    --brown-dark: #5d4037;
+    --text: #5d4037;
+    --text-soft: #8d6e63;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Zen Maru Gothic', 'M PLUS Rounded 1c', sans-serif;
+    background: var(--pink-bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 10% 5%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 90% 15%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px),
+      radial-gradient(circle at 80% 60%, rgba(255,255,255,0.4) 2px, transparent 3px),
+      radial-gradient(circle at 50% 85%, rgba(255,255,255,0.3) 1.5px, transparent 2.5px);
+    background-size: 200px 200px, 250px 250px, 180px 180px, 220px 220px, 190px 190px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ヘッダー */
+  .header {
+    text-align: center;
+    padding: 30px 16px 24px;
+  }
+
+  .header .deco-top {
+    font-size: 22px;
+    margin-bottom: 8px;
+    letter-spacing: 6px;
+  }
+
+  .header h1 {
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--pink-dark);
+    line-height: 1.4;
+    margin-bottom: 12px;
+    text-shadow: 2px 2px 0 var(--white);
+  }
+
+  .header h1 .small {
+    display: block;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .header .subtitle {
+    display: inline-block;
+    background: var(--white);
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--pink-dark);
+    font-weight: 700;
+    border: 2px dashed var(--pink-accent);
+    margin-top: 8px;
+  }
+
+  /* リード */
+  .lead {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 24px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 0 var(--pink-deep);
+    border: 3px solid var(--pink-deep);
+    position: relative;
+  }
+
+  .lead::before {
+    content: '📚';
+    position: absolute;
+    top: -16px;
+    left: 20px;
+    font-size: 24px;
+    background: var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--pink-deep);
+  }
+
+  .lead p {
+    font-size: 14px;
+    line-height: 1.9;
+    margin-top: 8px;
+  }
+
+  .lead .highlight {
+    background: linear-gradient(transparent 60%, var(--yellow) 60%);
+    font-weight: 700;
+  }
+
+  /* 目次 */
+  .toc {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 2px dashed var(--pink-accent);
+  }
+
+  .toc h3 {
+    text-align: center;
+    color: var(--pink-dark);
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: var(--white);
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brown-dark);
+    text-decoration: none;
+  }
+
+  .toc-item .num-circle {
+    background: var(--pink-accent);
+    color: var(--white);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* 目次へ戻るボタン */
+  .back-to-toc {
+    text-align: center;
+    margin: 14px 0 0;
+  }
+
+  .back-to-toc a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    color: var(--pink-dark);
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 2px solid var(--pink-accent);
+    box-shadow: 0 2px 0 var(--pink-accent);
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+
+  .back-to-toc a:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 var(--pink-accent);
+  }
+
+  /* 浮かぶ目次ボタン */
+  .floating-toc-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 16px;
+    background: var(--pink-accent);
+    color: var(--white);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 22px;
+    box-shadow: 0 4px 0 var(--pink-dark), 0 6px 12px rgba(0,0,0,0.15);
+    z-index: 100;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .floating-toc-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--pink-dark), 0 3px 6px rgba(0,0,0,0.15);
+  }
+
+  /* セクションヘッダー */
+  .section-header {
+    text-align: center;
+    padding: 24px 16px 16px;
+    margin-top: 20px;
+  }
+
+  .section-header .chapter {
+    display: inline-block;
+    background: var(--pink-accent);
+    color: var(--white);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 0 var(--pink-dark);
+  }
+
+  .section-header h2 {
+    font-weight: 900;
+    font-size: 22px;
+    color: var(--brown-dark);
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+
+  .section-header .sub {
+    font-size: 12px;
+    color: var(--text-soft);
+  }
+
+  /* 比喩カード（一行で要約） */
+  .metaphor-card {
+    background: linear-gradient(135deg, var(--yellow) 0%, #ffe082 100%);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid var(--yellow-deep);
+    box-shadow: 0 4px 0 var(--yellow-deep);
+    text-align: center;
+  }
+
+  .metaphor-card .label {
+    display: inline-block;
+    background: var(--white);
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: #8d6e00;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+
+  .metaphor-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--brown-dark);
+    font-weight: 700;
+  }
+
+  .metaphor-card .emoji-big {
+    font-size: 32px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  /* 比較カード */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .compare-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 16px 14px;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 4px 0 var(--pink-deep);
+  }
+
+  .compare-card.left {
+    border-color: var(--blue);
+    box-shadow: 0 4px 0 var(--blue);
+  }
+
+  .compare-card.right {
+    border-color: var(--purple);
+    box-shadow: 0 4px 0 var(--purple);
+  }
+
+  .compare-card .title-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px dotted var(--pink-soft);
+  }
+
+  .compare-card .name {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--brown-dark);
+  }
+
+  .compare-card.left .name { color: var(--blue-dark); }
+  .compare-card.right .name { color: var(--purple-dark); }
+
+  .compare-card .emoji {
+    font-size: 18px;
+  }
+
+  .compare-card .feature {
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .compare-card .feature::before {
+    content: '✿';
+    position: absolute;
+    left: 0;
+    color: var(--pink-accent);
+    font-size: 11px;
+  }
+
+  .compare-card.left .feature::before { color: var(--blue-dark); }
+  .compare-card.right .feature::before { color: var(--purple-dark); }
+
+  /* 説明カード */
+  .info-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 4px 0 var(--pink-deep);
+    position: relative;
+  }
+
+  .info-card.mint {
+    border-color: var(--mint);
+    box-shadow: 0 4px 0 var(--mint);
+  }
+
+  .info-card.blue {
+    border-color: var(--blue);
+    box-shadow: 0 4px 0 var(--blue);
+  }
+
+  .info-card.purple {
+    border-color: var(--purple);
+    box-shadow: 0 4px 0 var(--purple);
+  }
+
+  .info-card .badge {
+    position: absolute;
+    top: -12px;
+    left: 16px;
+    background: var(--pink-accent);
+    color: var(--white);
+    padding: 3px 12px;
+    border-radius: 14px;
+    font-size: 11px;
+    font-weight: 800;
+    box-shadow: 0 2px 0 var(--pink-dark);
+  }
+
+  .info-card.mint .badge { background: var(--mint-dark); box-shadow: 0 2px 0 #004d40; }
+  .info-card.blue .badge { background: var(--blue-dark); box-shadow: 0 2px 0 #0d47a1; }
+  .info-card.purple .badge { background: var(--purple-dark); box-shadow: 0 2px 0 #4a148c; }
+
+  .info-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--brown-dark);
+    margin: 6px 0 12px;
+    line-height: 1.4;
+  }
+
+  .info-card p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .info-card .example {
+    background: var(--pink-soft);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .info-card.mint .example { background: var(--mint-soft); }
+  .info-card.blue .example { background: #e3f2fd; }
+  .info-card.purple .example { background: #f3e5f5; }
+
+  .info-card .example strong {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: var(--pink-dark);
+  }
+
+  .info-card.mint .example strong { color: var(--mint-dark); }
+  .info-card.blue .example strong { color: var(--blue-dark); }
+  .info-card.purple .example strong { color: var(--purple-dark); }
+
+  /* USB-Cビジュアル */
+  .visual-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 16px;
+    border: 2px solid var(--purple);
+    box-shadow: 0 4px 0 var(--purple);
+    text-align: center;
+  }
+
+  .visual-card .big-emoji {
+    font-size: 40px;
+    margin: 10px 0;
+  }
+
+  .visual-card .arrow {
+    font-size: 24px;
+    color: var(--purple-dark);
+    margin: 8px 0;
+  }
+
+  .visual-card .label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brown-dark);
+    margin: 4px 0;
+  }
+
+  /* ステップ */
+  .steps {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 2px solid var(--mint);
+    box-shadow: 0 4px 0 var(--mint);
+  }
+
+  .steps h3 {
+    color: var(--mint-dark);
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .step-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+
+  .step-row .step-num {
+    background: var(--mint);
+    color: var(--mint-dark);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .step-row .step-text {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* 注意 */
+  .caution {
+    background: var(--yellow);
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
+    border: 2px solid var(--yellow-deep);
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .caution h3 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #8d6e00;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .caution ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .caution li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .caution li::before {
+    content: '🌸';
+    position: absolute;
+    left: 0;
+    font-size: 11px;
+  }
+
+  /* まとめ表 */
+  .summary-table {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px 16px;
+    margin-bottom: 16px;
+    border: 2px solid var(--pink-deep);
+    box-shadow: 0 4px 0 var(--pink-deep);
+  }
+
+  .summary-table h3 {
+    text-align: center;
+    color: var(--pink-dark);
+    margin-bottom: 14px;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .table-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--pink-deep);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .table-row:last-child { border-bottom: none; }
+
+  .table-row .term {
+    font-weight: 800;
+    color: var(--pink-dark);
+  }
+
+  .table-row .desc {
+    color: var(--text);
+  }
+
+  /* 分けライン */
+  .divider {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 18px;
+    letter-spacing: 8px;
+  }
+
+  /* フッター */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 30px;
+  }
+
+  .footer .deco {
+    font-size: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 10px;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.8;
+  }
+
+  .footer .signature {
+    margin-top: 16px;
+    font-weight: 700;
+    color: var(--pink-dark);
+    font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <div class="deco-top">🧸 📱 💻 📱 🧸</div>
+    <h1>
+      <span class="small">〜 もうちょっと知りたい人へ 〜</span>
+      パパママのための<br>Claudeの世界 第2巻
+    </h1>
+    <div class="subtitle">用語のモヤモヤをスッキリ解決♡</div>
+  </header>
+
+  <!-- リード -->
+  <div class="lead">
+    <p>
+      「ClaudeCode？Cowork？<br>MCPってなに？APIと何が違うの？」<br>
+      …聞いたことはあるけど、なんとなく<span class="highlight">モヤモヤしてる用語</span>たち。<br><br>
+      この資料では、それらを<span class="highlight">子育てに例えて</span>スッキリ整理します✨<br>
+      技術書を読む前の準備運動として読んでください🍼
+    </p>
+  </div>
+
+  <!-- 目次 -->
+  <div id="toc" class="toc">
+    <h3>🌷 もくじ 🌷</h3>
+    <a href="#chapter1" class="toc-item">
+      <div class="num-circle">1</div>
+      <div>Claude Code と Cowork の違い</div>
+    </a>
+    <a href="#chapter2" class="toc-item">
+      <div class="num-circle">2</div>
+      <div>Claude in Chrome でできること</div>
+    </a>
+    <a href="#chapter3" class="toc-item">
+      <div class="num-circle">3</div>
+      <div>MCP と API、結局なにが違う？</div>
+    </a>
+    <a href="#chapter4" class="toc-item">
+      <div class="num-circle">4</div>
+      <div>Git / GitHub ってなに？</div>
+    </a>
+  </div>
+
+  <div class="divider">🌸 🐻 🌸</div>
+
+  <!-- ============= セクション1 ============= -->
+  <div id="chapter1" class="section-header">
+    <span class="chapter">Chapter 1</span>
+    <h2>Claude Code と Cowork<br>どっちを使えばいいの？</h2>
+    <div class="sub">兄弟みたいで、得意分野がちがう子たち</div>
+  </div>
+
+  <div class="metaphor-card">
+    <span class="emoji-big">👶👶</span>
+    <span class="label">ひとことで言うと</span>
+    <p>
+      Coworkは<strong>「お利口な長女」</strong>🎀<br>
+      Codeは<strong>「腕白な長男」</strong>👦<br>
+      どちらも家事はできるけど、<br>得意なやり方がちがう兄弟です
+    </p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card left">
+      <div class="title-row">
+        <span class="emoji">🎀</span>
+        <span class="name">Cowork</span>
+      </div>
+      <div class="feature">GUI（画面操作）</div>
+      <div class="feature">非エンジニア向け</div>
+      <div class="feature">ボタン＆クリック</div>
+      <div class="feature">Pro契約で使える</div>
+      <div class="feature">PCの中で安全に動く</div>
+    </div>
+    <div class="compare-card right">
+      <div class="title-row">
+        <span class="emoji">👦</span>
+        <span class="name">Code</span>
+      </div>
+      <div class="feature">CLI（黒い画面）</div>
+      <div class="feature">エンジニア寄り</div>
+      <div class="feature">文字で指示</div>
+      <div class="feature">自由度MAX</div>
+      <div class="feature">なんでもできる</div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="badge">🎀 Cowork</div>
+    <h3>「家事代行さん」を雇うイメージ</h3>
+    <p>
+      Claudeデスクトップアプリの中にいる、お行儀のいいエージェント。<br>
+      <strong>指定したフォルダの中だけ</strong>で、ファイル整理・Excel作成・スライド作成・Webリサーチをしてくれます🌸
+    </p>
+    <div class="example">
+      <strong>こんな指示ができる</strong>
+      「このフォルダのレシート画像から、日付・店名・金額をExcelにまとめて」
+    </div>
+  </div>
+
+  <div class="info-card purple">
+    <div class="badge">👦 Code</div>
+    <h3>「住み込みの研究員」を雇うイメージ</h3>
+    <p>
+      ターミナル（黒い画面）で動くエージェント。<br>
+      <strong>PC全体を自由に動かせる</strong>ので、アプリ開発、自動化スクリプト、ブログの記事生成まで何でもできます。<br>
+      その分、最初の<strong>セットアップに少し勉強が必要</strong>です💻
+    </p>
+    <div class="example">
+      <strong>こんな指示ができる</strong>
+      「子どもの写真フォルダを月ごとに整理するスクリプトを作って、毎晩自動で動くようにして」
+    </div>
+  </div>
+
+  <div class="info-card mint">
+    <div class="badge">💡 選び方</div>
+    <h3>まずはCoworkから始めよう</h3>
+    <p>
+      非エンジニアなら<strong>Coworkで十分すごい</strong>です🌷<br>
+      もっと自動化したくなったら、Codeに進む。この順番がオススメ✨<br><br>
+      ※どちらも<strong>有料プラン（Pro月20ドル〜）が必要</strong>です
+    </p>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 🍼 🌸</div>
+
+  <!-- ============= セクション2 ============= -->
+  <div id="chapter2" class="section-header">
+    <span class="chapter">Chapter 2</span>
+    <h2>Claude in Chrome<br>でできること</h2>
+    <div class="sub">ブラウザの中にAIが住みつく</div>
+  </div>
+
+  <div class="metaphor-card">
+    <span class="emoji-big">🌐</span>
+    <span class="label">ひとことで言うと</span>
+    <p>
+      <strong>「Webサイト操作を肩代わり<br>してくれる助手」</strong>🤖<br>
+      Chromeに常駐して、見ているページを<br>一緒に確認しながら作業してくれます
+    </p>
+  </div>
+
+  <div class="info-card blue">
+    <div class="badge">🌐 Chrome拡張</div>
+    <h3>サイドパネルに住みつくAI</h3>
+    <p>
+      Chromeブラウザに<strong>拡張機能</strong>として入れると、画面の右側にClaudeが常駐します。<br>
+      今見ているページを読み取って、要約・抽出・操作まで全部やってくれます✨
+    </p>
+  </div>
+
+  <div class="info-card blue">
+    <div class="badge">✿ できること</div>
+    <h3>5つの代表的なお仕事</h3>
+    <p>
+      <strong style="color:var(--blue-dark)">🍓 ページ要約</strong><br>
+      長いブログを「3行で教えて」<br><br>
+      <strong style="color:var(--blue-dark)">🍓 フォーム入力代行</strong><br>
+      ECサイトの住所入力など定型作業<br><br>
+      <strong style="color:var(--blue-dark)">🍓 複数タブ横断リサーチ</strong><br>
+      5サイトの価格比較を一気に<br><br>
+      <strong style="color:var(--blue-dark)">🍓 ワークフロー記録</strong><br>
+      一度の操作を録画→次回から自動再生<br><br>
+      <strong style="color:var(--blue-dark)">🍓 スケジュール実行</strong><br>
+      毎朝決まった時間に自動でサイト巡回
+    </p>
+  </div>
+
+  <div class="info-card blue">
+    <div class="badge">🎀 子育てママへの活用</div>
+    <h3>こんな使い方はいかが？</h3>
+    <div class="example">
+      <strong>🌷 学用品のオンライン購入</strong>
+      「Amazonで●●小学校の体操服を検索して、サイズ120のものを3つ比較してカートに入れて。決済は私がする」
+    </div>
+    <div class="example">
+      <strong>🌷 保活リサーチ</strong>
+      「自治体の保活サイトを開いて、今年の入園倍率の高い保育園トップ5を一覧表にして」
+    </div>
+    <div class="example">
+      <strong>🌷 病院予約サイト巡回</strong>
+      「●●小児科の予約サイトを毎朝9時にチェックして、空きがあったらLINEで教えて」
+    </div>
+  </div>
+
+  <div class="caution">
+    <h3>⚠️ 使うときの注意</h3>
+    <ul>
+      <li>銀行・カード決済の最終ボタンは自分で押す</li>
+      <li>初めてのサイトは「読むだけ」から始める</li>
+      <li>「プロンプトインジェクション」という攻撃が存在する</li>
+      <li>つまり…悪意あるサイトの仕込みで、Claudeが意図しない動きをすることがある</li>
+      <li>「情報収集はAI、判断と送信は自分」の使い分けが安全</li>
+    </ul>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 🧸 🌸</div>
+
+  <!-- ============= セクション3 ============= -->
+  <div id="chapter3" class="section-header">
+    <span class="chapter">Chapter 3</span>
+    <h2>MCPとAPI、<br>結局なにが違うの？</h2>
+    <div class="sub">いちばんモヤモヤするやつ、解決します</div>
+  </div>
+
+  <div class="metaphor-card">
+    <span class="emoji-big">🔌</span>
+    <span class="label">ひとことで言うと</span>
+    <p>
+      <strong>APIは「個別の専用ケーブル」</strong>🔌<br>
+      <strong>MCPは「USB-Cの統一規格」</strong>📱<br><br>
+      MCPはAPIを置き換えるんじゃなく、<br>APIの上に立つ<strong>共通ルール</strong>です
+    </p>
+  </div>
+
+  <div class="info-card purple">
+    <div class="badge">📞 API</div>
+    <h3>アプリ同士が話す「電話線」</h3>
+    <p>
+      APIは <strong>Application Programming Interface</strong> の略。<br>
+      アプリAとアプリBがお話しするための<strong>専用の電話線</strong>みたいなもの。<br><br>
+      例：天気アプリは「気象庁API」に電話して天気を聞き出してます☎️
+    </p>
+    <div class="example">
+      <strong>困っていたこと</strong>
+      アプリごとに電話のかけ方が違うので、<strong>つなぐ相手が増えるたびに専用ケーブルを作る必要があった</strong>。これがエンジニアの大変なところでした💦
+    </div>
+  </div>
+
+  <div class="info-card purple">
+    <div class="badge">🔌 MCP</div>
+    <h3>AIのための「USB-C」</h3>
+    <p>
+      MCPは <strong>Model Context Protocol</strong> の略。<br>
+      Anthropic社が2024年11月に発表した<strong>共通の差込口の規格</strong>です✨<br><br>
+      これにより、AIは<strong>「同じ差し方」</strong>で色んなツールにつながれるようになりました🌸
+    </p>
+    <div class="example">
+      <strong>たとえばこんな感じ</strong>
+      以前：Notion用、Google Drive用、Slack用…と<strong>つなぎ方を全部別に勉強</strong>が必要<br><br>
+      MCP後：全部<strong>同じやり方</strong>でつながる🎀
+    </div>
+  </div>
+
+  <div class="visual-card">
+    <div class="label">📱 ClaudeなどのAI</div>
+    <div class="arrow">↓</div>
+    <div class="big-emoji">🔌</div>
+    <div class="label" style="color:var(--purple-dark); font-weight:800;">MCP（USB-Cハブ）</div>
+    <div class="arrow">↓ ↓ ↓ ↓</div>
+    <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:8px;">
+      <span style="background:var(--cream); padding:6px 10px; border-radius:10px; font-size:11px;">📝 Notion</span>
+      <span style="background:var(--cream); padding:6px 10px; border-radius:10px; font-size:11px;">📂 Drive</span>
+      <span style="background:var(--cream); padding:6px 10px; border-radius:10px; font-size:11px;">💬 Slack</span>
+      <span style="background:var(--cream); padding:6px 10px; border-radius:10px; font-size:11px;">📅 Calendar</span>
+    </div>
+  </div>
+
+  <div class="summary-table">
+    <h3>📊 ザックリ比較表</h3>
+    <div class="table-row">
+      <div class="term">API</div>
+      <div class="desc">アプリ同士をつなぐ昔からの仕組み。AI専用ではない</div>
+    </div>
+    <div class="table-row">
+      <div class="term">MCP</div>
+      <div class="desc">AIが外部ツールにつながる時の<strong>共通ルール</strong>。APIの上に立つ</div>
+    </div>
+    <div class="table-row">
+      <div class="term">関係性</div>
+      <div class="desc">MCPはAPIを置き換えない。むしろAPIを使いやすく整理する役</div>
+    </div>
+    <div class="table-row">
+      <div class="term">使う人</div>
+      <div class="desc">APIは開発者向け／MCPは設定すれば誰でも恩恵あり</div>
+    </div>
+  </div>
+
+  <div class="info-card mint">
+    <div class="badge">🌷 ママへの実感</div>
+    <h3>あなたはすでにMCPを使っているかも</h3>
+    <p>
+      Claudeアプリで「Googleドライブ連携」「Notion連携」のスイッチをONにしたことありませんか？<br><br>
+      あれが<strong>MCPの実装そのもの</strong>です✨<br>
+      難しいコードを書かずに、ボタンひとつでつなげるのはMCPのおかげなんです🎀
+    </p>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 📂 🌸</div>
+
+  <!-- ============= セクション4 ============= -->
+  <div id="chapter4" class="section-header">
+    <span class="chapter">Chapter 4</span>
+    <h2>Git と GitHub<br>ってなに？</h2>
+    <div class="sub">エンジニアじゃなくても、これは知っとくとお得</div>
+  </div>
+
+  <div class="metaphor-card">
+    <span class="emoji-big">📔</span>
+    <span class="label">ひとことで言うと</span>
+    <p>
+      <strong>Gitは「成長記録ノート」</strong>📔<br>
+      <strong>GitHubは「ノートを保管する共有書庫」</strong>🏛️<br><br>
+      子どもの成長記録を、家族で<br>共有できるイメージです🌸
+    </p>
+  </div>
+
+  <div class="info-card mint">
+    <div class="badge">📔 Git</div>
+    <h3>ファイルのタイムマシン</h3>
+    <p>
+      Gitは、ファイルの<strong>変更履歴を全部記録</strong>してくれるツール。<br>
+      「あ、3日前のこのバージョンに戻したい！」を可能にします⏰
+    </p>
+    <div class="example">
+      <strong>育児で例えるなら</strong>
+      離乳食の献立記録：「3月10日のメニューに戻したい」「先週のチャレンジレシピをもう一度作りたい」が完璧にできる📔
+    </div>
+  </div>
+
+  <div class="info-card mint">
+    <div class="badge">🏛️ GitHub</div>
+    <h3>ノートを置く共有書庫</h3>
+    <p>
+      GitHubは、Gitで記録したノートを<strong>クラウドに保管</strong>するサービスです。<br>
+      自分のPCが壊れてもデータが消えない＋<strong>他の人と共有できる</strong>のが特徴🌸
+    </p>
+    <div class="example">
+      <strong>こんなメリット</strong>
+      ・PCが壊れてもデータが安心<br>
+      ・スマホ・タブレット・PCどこからでも見られる<br>
+      ・夫婦で同じファイルに書き込める<br>
+      ・世界中の人が作った無料の「育児テンプレ」が見られる
+    </div>
+  </div>
+
+  <div class="info-card mint">
+    <div class="badge">💡 なぜ知っておくと得？</div>
+    <h3>Claude Codeと相性バツグン</h3>
+    <p>
+      Claude Codeは<strong>Gitと組み合わせて使う</strong>のが基本スタイル。<br>
+      AIがコードを書く→Gitで記録→失敗したらすぐ戻せる、という安心感があります💕<br><br>
+      また、ネット上には<strong>「うちの献立アプリ」「うちの家計簿」</strong>のような<strong>無料のテンプレ</strong>がGitHubにたくさん公開されていて、それを自分用にカスタマイズして使えます✨
+    </p>
+  </div>
+
+  <div class="steps">
+    <h3>🌟 入門ステップ（無理しないでOK）</h3>
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>GitHubアカウントを作るだけ</strong>でもOK。世界中のオープンソースが見られる
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        Claude Codeを使うときに<strong>「Gitで記録して」</strong>とお願いすればAIが全部やってくれる
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        慣れてきたら、<strong>夫婦・友人と共同編集</strong>もできるように
+      </div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="badge">🎀 こんな使い方も</div>
+    <h3>ママの作品集としても優秀</h3>
+    <p>
+      Claude Codeで作った<strong>「うちの献立アプリ」</strong>や<strong>「保育園送迎チェッカー」</strong>をGitHubに置いておくと…<br><br>
+      🌷 ポートフォリオになる<br>
+      🌷 同じ悩みのママと共有できる<br>
+      🌷 自分の「がんばった記録」として残る<br>
+      🌷 将来お仕事の証明にもなる
+    </p>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <div class="divider">🌸 🐻 🌸</div>
+
+  <!-- まとめ -->
+  <div class="section-header">
+    <span class="chapter">まとめ</span>
+    <h2>全部を一枚に🌷</h2>
+  </div>
+
+  <div class="summary-table">
+    <h3>📚 用語まるわかり表 📚</h3>
+    <div class="table-row">
+      <div class="term">Cowork</div>
+      <div class="desc">画面で動くAI家事代行さん（非エンジニア向け）</div>
+    </div>
+    <div class="table-row">
+      <div class="term">Code</div>
+      <div class="desc">なんでも屋の住み込み研究員(自由度MAX)</div>
+    </div>
+    <div class="table-row">
+      <div class="term">in Chrome</div>
+      <div class="desc">ブラウザに住みつくWeb作業の助手</div>
+    </div>
+    <div class="table-row">
+      <div class="term">API</div>
+      <div class="desc">アプリ同士の専用電話線</div>
+    </div>
+    <div class="table-row">
+      <div class="term">MCP</div>
+      <div class="desc">AIのためのUSB-C統一規格</div>
+    </div>
+    <div class="table-row">
+      <div class="term">Git</div>
+      <div class="desc">ファイルのタイムマシン📔</div>
+    </div>
+    <div class="table-row">
+      <div class="term">GitHub</div>
+      <div class="desc">タイムマシンの共有書庫🏛️</div>
+    </div>
+  </div>
+
+  <div class="back-to-toc"><a href="#toc">🔝 もくじへ戻る</a></div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <div class="deco">🌸 🐻 🍼 🐻 🌸</div>
+    <p>
+      全部いっぺんに覚えなくて大丈夫🌷<br>
+      「あ、これCowork向きかも」<br>
+      「これMCPで繋げられないかな？」<br>
+      …そんな感覚が芽生えればOKです☕<br><br>
+      用語は、必要になった時に<br>もう一度この資料を開いてくださいね💕
+    </p>
+    <div class="signature">
+      〜 リベシティ 赤ちゃんを愛でる会 5/29 〜<br>
+      Claudeパパママ講座 第2巻
+    </div>
+  </div>
+
+</div>
+
+<!-- フローティング目次ボタン -->
+<a href="#toc" class="floating-toc-btn" aria-label="目次へ戻る">🔝</a>
+
+</body>
+</html>
